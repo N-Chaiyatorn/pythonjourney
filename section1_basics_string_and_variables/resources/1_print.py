@@ -4,3 +4,5 @@
 """
 
 print("hi")
+
+# use ctrl + slash to comment the code
