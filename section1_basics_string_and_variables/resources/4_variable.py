@@ -6,4 +6,4 @@ more than that, variable makes our code looks much better and more readable
 """
 
 # n = input("Hello! What is your name? ")
-# print("Hello! " + n)
+print("Hello! " + n)
