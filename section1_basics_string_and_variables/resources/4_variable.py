@@ -5,7 +5,7 @@ because in the programming world, the data is needed to be stored and reused
 more than that, variable makes our code looks much better and more readable
 """
 
-n = input("Hello! What is your name? ")
+# n = input("Hello! What is your name? ")
 print("Hello! " + n)
 print("Are you still there" + " " + n)
 input("")
