@@ -9,15 +9,18 @@ The BMI is calculated by dividing a person's weight (in kg) by the square of the
 Warning you should convert the result to a whole number.
 
 
-Example Input
-
+### Example Input
+```
 weight = 80
 height = 1.75
+```
 
-Example Output
-
+### Example Output
+```
 80 ÷ (1.75 x 1.75) = 26.122448979591837
 26
+```
+
 """
 
 
