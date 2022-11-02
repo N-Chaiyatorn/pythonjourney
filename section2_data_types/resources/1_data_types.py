@@ -1,7 +1,7 @@
 """Data types"""
 
-# String
-print("Hello"[0])
+# String Subscription
+print("Hello"[4])
 
 # Integer
 123

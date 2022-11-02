@@ -4,12 +4,17 @@ Write a program that adds the digits in a 2 digit number. e.g. if the input was 
 Warning: Do not change the code on lines 1-3. Your program should work for different inputs. e.g. any two-digit number.
 
 
-Example Input
+### Example input
+```
 39
+```
 
-Example Output
+### Example Output
+```
 3 + 9 = 12
 12
+```
+
 """
 
 # 🚨 Don't change the code below 👇
