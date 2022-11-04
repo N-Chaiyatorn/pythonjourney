@@ -22,5 +22,14 @@ height = 1.75
 ```
 
 """
+user_weight = input("weight = ")       #user's weight input      
+user_height = input("height = ")       #user's height input  
+
+user_weight_number = float(user_weight)               #The transformation of turning weight input into integer data
+user_height_number = float(user_height)             #The transformation of turning height input into float data
+user_total_BMI = user_weight_number/user_height_number**2       #The calculation of BMI
+
+print(f"{user_weight} ÷ ({user_height} x {user_height}) = {user_total_BMI}")       #Print BMI solution
+print(round(user_total_BMI))        #The total result of BMI in integer digits
 
 

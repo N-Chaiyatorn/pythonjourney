@@ -27,3 +27,14 @@ Each person should pay: $19.93
 ```
 
 """
+print("Welcome to the tip calculator!")
+total_bill = input("What was the total bill? $")
+percent_of_tip = input("How much tip would you like to give? 10, 12, or 15? ")
+amount_of_people = input("How many people to split the bill? ")
+
+total_bill_calculation = float(total_bill)
+percent_of_tip_calculation = ((float(percent_of_tip))/100) + 1
+amount_of_people_calculation = int(amount_of_people)
+each_person_payment = (total_bill_calculation/amount_of_people_calculation)*percent_of_tip_calculation
+
+print("Each person should pay: ${:0.2f}".format(each_person_payment))
