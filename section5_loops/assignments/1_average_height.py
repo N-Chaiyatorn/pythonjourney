@@ -35,8 +35,14 @@ for n in range(0, len(student_heights)):
   student_heights[n] = int(student_heights[n])
 # 🚨 Don't change the code above 👆
 
-
+total_height = 0
+amount_of_student = 0
 #Write your code below this row 👇
+for student_height in student_heights:
+  total_height += student_height
+  amount_of_student += 1
+  
+print(round(total_height/amount_of_student))
 
 
 

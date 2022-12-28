@@ -32,3 +32,16 @@ FizzBuzz
 1. Remember your answer should start from 1 and go up to and including 100.
 2. Each number/text should be printed on a separate line.
 """
+
+for number in range(1, 101):
+    isdividedby3 = bool(number % 3) 
+    isdividedby5 = bool(number % 5)
+    if not isdividedby3 and not isdividedby5:
+        print("FizzBuzz")
+    elif not isdividedby3:
+        print("Fizz")
+    elif not isdividedby5:
+        print("Buzz")
+    else:
+        print(f"{number}")
+

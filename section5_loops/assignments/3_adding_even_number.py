@@ -7,3 +7,10 @@ __Important__: there should only be 1 print statement in your console output. It
 """
 
 #Write your code below this row 👇
+for even_number in range(2,102,2):
+    if even_number <= 2:
+        total_calculation = 0
+    total_calculation += even_number
+    test = even_number
+
+print(f"The summation of even number from 2 to {test} is {total_calculation}")
