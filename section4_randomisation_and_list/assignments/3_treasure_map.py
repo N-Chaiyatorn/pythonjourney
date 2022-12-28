@@ -70,7 +70,12 @@ position = input("Where do you want to put the treasure? ")
 #Write your code below this row 👇
 
 
-
+two_digits = int(position)
+first_digits = two_digits // 10
+second_digits = two_digits % 10
+column = first_digits-1
+row = second_digits-1
+map[row][column] = "X"
 
 
 #Write your code above this row 👆

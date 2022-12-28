@@ -16,3 +16,12 @@ or
 Tails
 ```
 """
+
+
+import random
+randomaly_coin_num = bool(random.randint(0,1))       #Randomaly coin tossing number     
+
+if randomaly_coin_num:
+    print("Heads")
+else:
+    print("Tails")

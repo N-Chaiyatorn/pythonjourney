@@ -18,10 +18,14 @@ Michael is going to buy the meal today!
 """
 
 # Import the random module here
-
+import random
 # Split string method
 names_string = input("Give me everybody's names, separated by a comma. ")
 names = names_string.split(", ")
 # 🚨 Don't change the code above 👆
 
 #Write your code below this line 👇
+
+payment_person = random.sample(names , k=1)     #Sampling list that named names to 1x1 list         
+
+print(f"{payment_person[0]} is going to buy a meal today.")      #A person that gonna pay a meal for today        
