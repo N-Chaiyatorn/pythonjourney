@@ -28,45 +28,59 @@ scissors = '''
 #Write your code below this line 👇 
 import random 
 print("Welcome to Rock Paper Scissors game.")
-users_hand_sign = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
-hand_sign = [rock, paper, scissors]
-hand_sign_character = ["rock" , "paper", "scissors"]
+users_hand_sign = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))                           #Input user hand sign   
+hand_sign = [rock, paper, scissors]                                                                                             #The image of hand signs
+hand_sign_character = ["rock" , "paper", "scissors"]                                                                            #The string of hand signs in every case
+player_hand_sign = hand_sign_character[users_hand_sign]
 computer_hand_sign = random.randint(0, 2)
-print(f"\nYour hand sign is {hand_sign_character[users_hand_sign]}\n{hand_sign[users_hand_sign]}\nvs\n\nYour opponent hand sign is {hand_sign_character[computer_hand_sign]}\n{hand_sign[computer_hand_sign]}")
+opponent_hand_sign = hand_sign_character[computer_hand_sign]
+draw = "You are draw with you opponent."
+lose = "You lose."
+win = "You win"
 
-if not bool(users_hand_sign):
-    if not bool(computer_hand_sign):
-        print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is also {hand_sign_character[computer_hand_sign]}.")
-        print("You are draw with you opponent.")
-    else:
-        if computer_hand_sign == 1:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-            print("You lose.")
-        else:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-            print("You win.")
-elif users_hand_sign == 1:
-    if not bool(computer_hand_sign):
-        print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-        print("You win.")
-    else:
-        if computer_hand_sign == 1:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is also {hand_sign_character[computer_hand_sign]}.")
-            print("You are draw with you opponent.")
-        else:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-            print("You lose.")
+def youaredraw():
+    print(f"Your hand sign is {player_hand_sign} and your opponent hand sign is also {opponent_hand_sign}.")
+    print(draw)
+
+def youwin():
+    print(f"Your hand sign is {player_hand_sign} and your opponent hand sign is {opponent_hand_sign}.")
+    print(win)
+
+def youlose():
+    print(f"Your hand sign is {player_hand_sign} and your opponent hand sign is {opponent_hand_sign}.")
+    print(lose)  
+
+if 0 <= users_hand_sign <= 2:
+    print(f"\nYour hand sign is {player_hand_sign}\n{hand_sign[users_hand_sign]}\nvs\n\nYour opponent hand sign is {opponent_hand_sign}\n{hand_sign[computer_hand_sign]}")
+    if player_hand_sign == "rock":
+        if opponent_hand_sign == "rock":
+            youaredraw()
+        elif opponent_hand_sign == "paper":
+            youlose()
+        elif opponent_hand_sign == "scissors":
+            youwin()
+    elif player_hand_sign == "paper":
+        if opponent_hand_sign == "rock":
+            youwin()
+        elif opponent_hand_sign == "paper":
+            youaredraw()
+        elif opponent_hand_sign == "scissors":
+            youlose()
+    elif player_hand_sign == "scissors":
+        if opponent_hand_sign == "rock":
+            youlose()
+        elif opponent_hand_sign == "paper":
+            youwin()
+        elif opponent_hand_sign == "scissors":
+            youaredraw()
 else:
-    if not bool(computer_hand_sign):
-        print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-        print("You lose.")
-    else:
-        if computer_hand_sign == 1:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is {hand_sign_character[computer_hand_sign]}.")
-            print("You win.")
-        else:
-            print(f"Your hand sign is {hand_sign_character[users_hand_sign]} and your opponent hand sign is also {hand_sign_character[computer_hand_sign]}.")
-            print("You are draw with you opponent.")
+    print("Your input is invalid please run again.")
+
+
+
+
+
+
 
 
 
