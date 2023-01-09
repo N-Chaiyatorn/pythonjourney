@@ -28,10 +28,22 @@ It's not a prime number.
 ```
 """
 #Write your code below this line 👇
-
-
-
-
+def prime_checker(number):
+    not_a_prime = "It's not a prime number."
+    a_prime = "It's a prime number."
+    if number >= 2:
+        divided_by_other_than_themself = 0
+        for each_number in range(2, number):
+            if number%each_number == 0:
+                divided_by_other_than_themself+=1
+        isdividedthanprime = bool(divided_by_other_than_themself)
+        if isdividedthanprime:
+            print(not_a_prime)
+        else:
+            print(a_prime)
+                
+    else:
+        print(not_a_prime)
 
 #Write your code above this line 👆
     

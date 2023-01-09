@@ -23,12 +23,12 @@ You'll need 6 cans of paint.
 """
 
 #Write your code below this line 👇
+import math
 
-
-
-
-
-
+def paint_calc(height, width, cover):
+   number_of_cans = (height * width)/cover                                                  #Find the number of cans           
+   actual_cans = math.ceil(number_of_cans)                                                  #Rounded up the number of can to find how many cans actually use    
+   print(f"You'll need {actual_cans} cans to paint this wall.")              
 
 #Write your code above this line 👆
 # Define a function called paint_calc() so that the code below works.   
