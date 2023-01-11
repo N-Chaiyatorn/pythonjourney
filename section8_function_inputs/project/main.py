@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 """
 Prime numbers are numbers that can only be cleanly divided by themselves and 1.
 https://en.wikipedia.org/wiki/Prime_number
@@ -44,3 +45,10 @@ def prime_checker(number):
 #Do NOT change any of the code below👇
 n = int(input("Check this number: "))
 prime_checker(number=n)
+=======
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+>>>>>>> 69ed7dd6750dc4d02db8be7815e1182f9584a5b4
