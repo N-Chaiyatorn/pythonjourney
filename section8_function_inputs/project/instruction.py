@@ -1,9 +1,3 @@
-alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-
 """ part 1 encryption """
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 
@@ -34,7 +28,6 @@ shift = int(input("Type the shift number:\n"))
 
 #TODO-3: Check if the user wanted to encrypt or decrypt the message by checking the 'direction' variable. 
     #Then call the correct function based on that 'direction' variable. You should be able to test the code to encrypt *AND* decrypt a message.
-    #i.e. direction variable can be 'encrypt' or 'decrypt'
 
 
 """ part 3 Refactor/Reorganized the code """
