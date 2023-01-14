@@ -2,8 +2,10 @@ def function():
     x = 1 + 1
     return x
 
+# a = function() = 2 
+
 def format_name(last_name, first_name):
-    formatted_last_name = last_name.title()
+    formatted_last_name = last_name.title()             #====> .title() ===>ทำให้ str 
     formatted_first_name = first_name.title()
     print(f"{formatted_last_name} {formatted_first_name}")
 
