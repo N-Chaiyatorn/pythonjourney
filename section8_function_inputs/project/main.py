@@ -1,7 +1,7 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def encrypt(message, shifting, alphabet_length = len(alphabet)):
-    crypt_code = ""
+    caesar_coding = ""
     # Looping every letter in text.
     for each_letter in range(len(message)): 
         encrypt_letter = message[each_letter]
@@ -14,31 +14,32 @@ def encrypt(message, shifting, alphabet_length = len(alphabet)):
                 # If the index is greater than final index number on the right hand side then return message_index_num into 0.
                 if message_index_num == alphabet_length:
                     message_index_num = 0
-        
             encrypt_letter = alphabet[message_index_num]
-        crypt_code += encrypt_letter             #The summation of all letters that have been encoded    
+        
+        caesar_coding += encrypt_letter             #The summation of all letters that have been encoded    
     
-    print(f"The encode text is {crypt_code}")
+    print(f"The encode text is {caesar_coding}")
 
 def decrypt(message, shifting, alphabet_length = len(alphabet)):
-    crypt_code = ""
+    caesar_coding = ""
     # Looping every letter in text.
     for each_letter in range(len(message)):
-            decrypt_letter = message[each_letter]
-            # If the letter is in alphabet list, decrypt program is going to decode each letter.
-            if message[each_letter] in alphabet:
-                message_index_num = alphabet.index(message[each_letter])
-                # Using for loop to figure out the actual index number of decoded letter in list.
-                for sequence in range(shifting):
-                    message_index_num-=1
-                    # If the index is lower than final index on the left hand side then return message_index_num into the hightest index in list.
-                    if message_index_num == -alphabet_length-1:
-                        message_index_num = alphabet_length - 1
+        decrypt_letter = message[each_letter]
+        # If the letter is in alphabet list, decrypt program is going to decode each letter.
+        if message[each_letter] in alphabet:
+            message_index_num = alphabet.index(message[each_letter])
+            # Using for loop to figure out the actual index number of decoded letter in list.
+            for sequence in range(shifting):
+                message_index_num-=1
+                # If the index is lower than final index on the left hand side then return message_index_num into the hightest index in list.
+                if message_index_num == -alphabet_length-1:
+                    message_index_num = alphabet_length - 1
         
-                decrypt_letter = alphabet[message_index_num]
+            decrypt_letter = alphabet[message_index_num]
             
-            crypt_code+=decrypt_letter                  #The summation of all letters that have been decoded    
-    print(f"The decode text is {crypt_code}")
+        caesar_coding+=decrypt_letter                  #The summation of all letters that have been decoded    
+    
+    print(f"The decode text is {caesar_coding}")
 
 def caesar(message, shifting , direction_text):
     
