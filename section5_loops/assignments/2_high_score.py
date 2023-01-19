@@ -27,13 +27,13 @@ print(student_scores)
 # 🚨 Don't change the code above 👆
 
 #Write your code below this row 👇
-heighest_score = 0
+highest_score = 0
 for student_score in student_scores:
   new_score = student_score
-  if new_score >= heighest_score:
-    heighest_score = new_score
+  if new_score >= highest_score:
+    heigest_score = new_score
 
-print(f"The highest score in the class is : {heighest_score}")
+print(f"The highest score in the class is : {highest_score}")
     
   
 

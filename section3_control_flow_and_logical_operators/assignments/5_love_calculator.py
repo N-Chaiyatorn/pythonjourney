@@ -78,9 +78,9 @@ counting_L = name1.count("L") + name1.count("l") + name2.count("L") + name2.coun
 counting_O = name1.count("O") + name1.count("o") + name2.count("O") + name2.count("o")
 counting_V = name1.count("V") + name1.count("v") + name2.count("V") + name2.count("v")
 counting_E = name1.count("E") + name1.count("e") + name2.count("E") + name2.count("e")
-total_counting_of_LOVE = counting_L + counting_O + counting_V + counting_E                  #The amount of LOVE character in name1 and name2                 
+total_counting_of_LOVE = counting_L + counting_O + counting_V + counting_E                       #The amount of LOVE character in name1 and name2                 
 
-total_love_score = (total_counting_of_TRUE * 10) + total_counting_of_LOVE                   #The calculation of love score       
+total_love_score = (total_counting_of_TRUE * 10) + total_counting_of_LOVE                        #The calculation of love score       
 
 if total_love_score < 10 or total_love_score > 90:
     print(f"Your score is {total_love_score}, you go together like coke and mentos.")

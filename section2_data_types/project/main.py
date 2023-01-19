@@ -37,4 +37,4 @@ percent_of_tip_calculation = ((float(percent_of_tip))/100) + 1                  
 amount_of_people_calculation = int(amount_of_people)                                        #The transformation of amount of people variable to float data 
 each_person_payment = (total_bill_calculation/amount_of_people_calculation)*percent_of_tip_calculation          #Each person payment
 
-print("Each person should pay: ${:0.2f}".format(each_person_payment))                                                          
+print("Each person should pay: ${:0.2f}".format(each_person_payment))           #The result of each person payment                                                

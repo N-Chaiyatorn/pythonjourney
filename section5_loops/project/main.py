@@ -13,38 +13,38 @@ nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 #e.g. 4 letter, 2 symbol, 2 number = JduE&!91
 
-# overall_letters = random.sample(letters, nr_letters)
-# overall_symbols = random.sample(symbols, nr_symbols)
-# overall_numbers = random.sample(numbers, nr_numbers)
+overall_letters = random.sample(letters, nr_letters)          #Sampling letters to the new list   
+overall_symbols = random.sample(symbols, nr_symbols)          #Sampling symbols to the new list   
+overall_numbers = random.sample(numbers, nr_numbers)          #Sampling numbers to the new list   
 
-# overall_symbols.extend(overall_numbers)
-# overall_letters.extend(overall_symbols)
+overall_symbols.extend(overall_numbers)                     #Extending overall_symbols list     
+overall_letters.extend(overall_symbols)                     #Extending overall_letters list  
 
-# overall_characteristic = overall_letters
-# your_password = ""
+overall_characteristic = overall_letters
+your_password = ""
 
-# for characteristic_sequence in overall_characteristic:
-#     your_password += characteristic_sequence
+for characteristic_sequence in overall_characteristic:
+    your_password += characteristic_sequence            #Gathering all character in list  
 
-# print(your_password)
+print(your_password)
 
     
 #Hard Level - Order of characters randomised:
 #e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
  
-overall_letters = random.sample(letters, nr_letters)
-overall_symbols = random.sample(symbols, nr_symbols)
-overall_numbers = random.sample(numbers, nr_numbers)
+overall_letters = random.sample(letters, nr_letters)             #Sampling letters to the new list
+overall_symbols = random.sample(symbols, nr_symbols)             #Sampling symbols to the new list
+overall_numbers = random.sample(numbers, nr_numbers)             #Sampling numbers to the new list
 
-overall_symbols.extend(overall_numbers)
-overall_letters.extend(overall_symbols)
+overall_symbols.extend(overall_numbers)                          #Extending overall_symbols list
+overall_letters.extend(overall_symbols)                          #Extending overall_letters list
 
-random.shuffle(overall_letters)
+random.shuffle(overall_letters)                                  #Shuffing all index in list
 
 overall_characteristic = ""
 
 for pass_sequence in range(len(overall_letters)):
-    overall_characteristic += overall_letters[pass_sequence]
+    overall_characteristic += overall_letters[pass_sequence]                #Gathering all character in list
 
 print(overall_characteristic)
 

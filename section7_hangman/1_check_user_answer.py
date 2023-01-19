@@ -11,6 +11,7 @@ guess = input("Please type your first letter: ").lower()
 
 correct = 0
 amount_of_letters = len(chosen_word)
+
 for letter in range(amount_of_letters):
     if guess == chosen_word[letter]:
         correct+=1

@@ -81,7 +81,7 @@ if ispizzasmall:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")           #The price of pizza that you have to pay if you has ordered pizza size small and add some pepporoni but didn't add any cheese
         else:
-            print("Error!! please check your input again.")  
+            print("Error!!")  
     elif ispepperoniaddn:
         if ischeeseaddy:
             pizza_price += 1
@@ -89,9 +89,9 @@ if ispizzasmall:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")               #The price of pizza that you have to pay if you has ordered pizza size small and didn't add any cheese and pepporoni 
         else:
-            print("Error!! please check your input again.")
+            print("Error!!")
     else:
-        print("Error!! please check your input again.")   
+        print("Error!!")   
 elif ispizzamedium:
 
     pizza_price = 20
@@ -104,7 +104,7 @@ elif ispizzamedium:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")                              #The price of pizza that you have to pay if you has ordered pizza size medium and add some pepporoni but didn't add any cheese
         else:
-            print("Error!! please check your input again.")
+            print("Error!!")
     elif ispepperoniaddn:
         if ischeeseaddy:
             pizza_price += 1
@@ -112,9 +112,9 @@ elif ispizzamedium:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")                               #The price of pizza that you have to pay if you has ordered pizza size medium and didn't add any cheese and pepporoni
         else:
-            print("Error!! please check your input again.")
+            print("Error!!")
     else:
-        print("Error!! please check your input again.")
+        print("Error!!")
 elif ispizzalarge:
     pizza_price = 25
     if ispepperoniaddy:
@@ -125,7 +125,7 @@ elif ispizzalarge:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")           #The price of pizza that you have to pay if you has ordered pizza size large and add some pepporoni but didn't add any cheese
         else:
-            print("Error!! please check your input again.")     
+            print("Error!!")     
     elif ispepperoniaddn:
         if ischeeseaddy:
             pizza_price += 1
@@ -133,11 +133,11 @@ elif ispizzalarge:
         elif ischeeseaddn:
             print(f"Your final bill is: ${pizza_price}.")        #The price of pizza that you have to pay if you has ordered pizza size large and didn't add any cheese and pepporoni
         else:
-            print("Error!! please check your input again.")
+            print("Error!!")
     else:
-        print("Error!! please check your input again.")      
+        print("Error!!")      
 else:
-    print("Error!! please check your input again.")
+    print("Error!!")
         
 
 # size_price = 0

@@ -68,17 +68,3 @@ position = input("Where do you want to put the treasure? ")
 # 🚨 Don't change the code above 👆
 
 #Write your code below this row 👇
-
-
-two_digits = int(position)            #Location number of "X"   
-first_digits = two_digits // 10       #Column digit of "X" in nested list     
-second_digits = two_digits % 10       #Row digit of "X" in nested list  
-column = first_digits-1               #Find real column location in nested list 
-row = second_digits-1                 #Find real row location in nested list 
-map[row][column] = "X"                  
-
-
-#Write your code above this row 👆
-
-# 🚨 Don't change the code below 👇
-print(f"{row1}\n{row2}\n{row3}")

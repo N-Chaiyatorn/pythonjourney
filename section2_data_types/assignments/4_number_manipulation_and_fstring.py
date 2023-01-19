@@ -25,9 +25,8 @@ You have 12410 days, 1768 weeks, and 408 months left.
 
 user_age = input("")                            #Write your ages
 user_age_number = int(user_age)                 #The transformation of user's ages to integer data
-remainng_years = 90 - user_age_number           #User's remaining ages
-remainng_days = 365 * remainng_years            #User's remaining days
+remainingg_years = 90 - user_age_number           #User's remaining ages
+fou = 365 * remainng_years            #User's remaining days
 remainng_weeks = 52 * remainng_years            #User's remaining weeks
 remainng_months = 12 * remainng_years           #User's remaining years
-
-print(f"You have {remainng_days} days, {remainng_weeks} weeks, and {remainng_months} months left.")         #The result of user's times left 
+print(f"You have {fou} days, {remainng_weeks} weeks, and {remainng_months} months left.")         #The result of user's times left 

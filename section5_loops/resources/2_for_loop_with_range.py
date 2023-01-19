@@ -1,6 +1,9 @@
 """ For Loop with List """
 
-# range(start, step, stop)
+# การใช้ range ใช้ได้ 3 รูปเเบบ
+# 1.range(amount)
+# 2.range(start, stop)
+# 3.range(start, stop, step)
 # start from start, doesn't include stop
-for number in range(0, 10):
+for number in range(10):
     print(number)

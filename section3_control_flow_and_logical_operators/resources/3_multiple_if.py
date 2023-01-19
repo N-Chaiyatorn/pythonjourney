@@ -17,7 +17,7 @@ else:
 isWantToIncreaseIq = bool(input("Want to increase iq? Type 'True' if true or press enter if false\n"))
 
 """ Tips: Boolean variables don't need to compare with True or False, you can use it after if/elif directly """
-if (isWantToIncreaseIq):
+if (isWantToIncreaseIq):   #if + Boolean: or elif + Boolean: เสมอ
     iq += 20
     print(f"Your iq is increased by 20, now iq = {iq}")
 else:

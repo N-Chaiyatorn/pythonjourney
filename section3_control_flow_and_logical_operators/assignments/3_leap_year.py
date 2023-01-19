@@ -50,20 +50,20 @@ Not leap year.
 
 years_requirement = int(input(""))                        
 
-isdividedby4 = bool(years_requirement % 4)         #The checking of remainder of years divided by 4 and transform remainder into boolean data              
-isdividedby100 = bool(years_requirement % 100)     #The checking of remainder of years divided by 100 and transform remainder into boolean data    
-isdividedby400 = bool(years_requirement % 400)     #The checking of remainder of years divided by 400 and transform remainder into boolean data    
+is_divided_by_4 = bool(years_requirement % 4)         #The checking of remainder of years divided by 4 and transform remainder into boolean data              
+is_divided_by_100 = bool(years_requirement % 100)     #The checking of remainder of years divided by 100 and transform remainder into boolean data    
+is_divided_by_400 = bool(years_requirement % 400)     #The checking of remainder of years divided by 400 and transform remainder into boolean data    
 
-if not isdividedby4:
-    if not isdividedby100:
-        if not isdividedby400:
-            print("Leap year.")           #If years requirement can be divided by 4,100 and 400 that year is leap years 
+if not is_divided_by_4:
+    if not is_divided_by_100:
+        if not is_divided_by_400:
+            print("Leap year.")             #If years requirement can be divided by 4,100 and 400 that year is leap years 
         else:
-            print("Not leap year.")       #If years requirement can be divided by 4 and 100 but can't be divided by 400 that year is not leap years 
+            print("Not leap year.")         #If years requirement can be divided by 4 and 100 but can't be divided by 400 that year is not leap years 
     else:
-        print("Leap year")                #If years requirement can be divided by 4 but can't be divided by 100 and 400 that year is leap years 
+        print("Leap year")                  #If years requirement can be divided by 4 but can't be divided by 100 and 400 that year is leap years 
 else:
-    print("Not leap year.")               #If years requirement can't be divided by 4,100 and 400 that year is not leap years       
+    print("Not leap year.")                 #If years requirement can't be divided by 4,100 and 400 that year is not leap years       
 
     
 
