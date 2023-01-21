@@ -24,15 +24,20 @@ def is_leap(year):
   else:
     return False
 
+# Find amount of days in given month and years function
 def days_in_month(each_year, month):
   month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-  isthisaleap = is_leap(year = each_year) 
-  if isthisaleap:
-    month_days[1] = 29
+  isthisaleap = is_leap(year = each_year)
+  days = month_days[month-1]
 
-  return month_days[month-1]
-  
-  
+  if month != 2:
+    return days
+  else:
+    if isthisaleap:
+      return 29
+    else:
+      return days
+    
 #🚨 Do NOT change any of the code below 
 year = int(input("Enter a year: "))
 month = int(input("Enter a month: "))
