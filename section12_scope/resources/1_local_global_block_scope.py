@@ -1,5 +1,4 @@
 # Local Scope
-
 # def local_scope():
 #     y = 2
 #     print(y)
@@ -7,9 +6,7 @@
 # print(y)
 
 
-
 # Global Scope
-
 # a = 1
 # def global_scope():
 #     b = 2
@@ -17,9 +14,7 @@
 # global_scope()
 
 
-
 # Block scope
-
 # def block_scope():
 #     a = 1
 #     if True:
@@ -28,9 +23,7 @@
 # block_scope()
 
 
-
 # Extra: modify global scope
-
 # a = 1
 # def modify_global_scope():
 #     global a
@@ -38,3 +31,7 @@
 #     print(a)
 # modify_global_scope()
 # print(a)
+
+# Global constant
+# PI = 3.14159
+# GOOGLE_URL = "www.google.com"
