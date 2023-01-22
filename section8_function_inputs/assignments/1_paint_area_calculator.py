@@ -25,7 +25,8 @@ You'll need 6 cans of paint.
 #Write your code below this line 👇
 import math
 
-def paint_calc(height, width, cover):                                                                
+def paint_calc(height, width, cover):   
+                                                                
    actual_cans = math.ceil((height * width)/cover)                                                         
    print(f"You'll need {actual_cans} cans to paint this wall.")              
 

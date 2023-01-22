@@ -31,11 +31,10 @@ It's not a prime number.
 def prime_checker(number):
     
     amount_of_divided_by = 0
-        
     for each_number in range(1, number + 1):
         if number % each_number == 0:
             amount_of_divided_by += 1
-        
+    
     if amount_of_divided_by == 2:
         print("It's a prime number.")
     else:
