@@ -29,21 +29,20 @@ It's not a prime number.
 """
 #Write your code below this line 👇
 def prime_checker(number):
-    not_a_prime = "It's not a prime number."
-    if number >= 2:
-        divided_by_other = 0
-        # Counting the amount of number that can divide given number
-        for each_number in range(2, number):
-            if number%each_number == 0:
-                divided_by_other+=1
-        # checking if there are the number other than 1 and themselve can divide given number so that is not a prime number
-        if divided_by_other > 0:
-            print(not_a_prime)
-        else:
-            print("It's a prime number.")
-                
+    
+    divided_by_each_num = 0
+        
+    for each_number in range(1, number+1):
+        if number%each_number == 0:
+            divided_by_each_num+=1
+        
+    if divided_by_each_num == 2:
+        print("It's a prime number.")
     else:
-        print(not_a_prime)
+        print("It's not a prime number.")
+            
+                
+    
 
 #Write your code above this line 👆
     
