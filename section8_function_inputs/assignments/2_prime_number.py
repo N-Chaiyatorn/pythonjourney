@@ -30,20 +30,18 @@ It's not a prime number.
 #Write your code below this line 👇
 def prime_checker(number):
     
-    divided_by_each_num = 0
+    amount_of_divided_by = 0
         
-    for each_number in range(1, number+1):
-        if number%each_number == 0:
-            divided_by_each_num+=1
+    for each_number in range(1, number + 1):
+        if number % each_number == 0:
+            amount_of_divided_by += 1
         
-    if divided_by_each_num == 2:
+    if amount_of_divided_by == 2:
         print("It's a prime number.")
     else:
         print("It's not a prime number.")
             
                 
-    
-
 #Write your code above this line 👆
     
 #Do NOT change any of the code below👇
