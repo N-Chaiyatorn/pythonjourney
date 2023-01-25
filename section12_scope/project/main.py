@@ -1,19 +1,6 @@
 #Number Guessing Game Objectives:
 
 # Include an ASCII art logo. you may get from here http://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
-
-logo = """
- ________                                                  ___.                                                
- /  _____/ __ __   ____   ______ ______   ____  __ __  _____\_ |__   ___________     _________    _____   ____  
-/   \  ___|  |  \_/ __ \ /  ___//  ___/  /    \|  |  \/     \| __ \_/ __ \_  __ \   / ___\__  \  /     \_/ __ \ 
-\    \_\  \  |  /\  ___/ \___ \ \___ \  |   |  \  |  /  Y Y  \ \_\ \  ___/|  | \/  / /_/  > __ \|  Y Y  \  ___/ 
- \______  /____/  \___  >____  >____  > |___|  /____/|__|_|  /___  /\___  >__|     \___  (____  /__|_|  /\___  >
-        \/            \/     \/     \/       \/            \/    \/     \/        /_____/     \/      \/     \/
-
-"""
-
-
-
 # Allow the player to submit a guess for a number between 1 and 100.
 # Check user's guess against actual answer. Print "Too high." or "Too low." depending on the user's answer. 
 # If they got the answer correct, show the actual answer to the player.
@@ -22,6 +9,7 @@ logo = """
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
 import random
+from logoart import logo
 
 
 def turn_decrease(current_turns):
@@ -40,14 +28,13 @@ def higher_or_lower():
 
 print(logo)
 print("Welcome to guess number game.")
-print("First of all you have to guess the correct number.")
 diff_level = input("What's the level do you want to play,please type 'easy' or 'hard' : ").lower()
 isremainturn = True
 correct_ans = random.randint(1, 100)
 if diff_level == 'easy':
     player_turns = 10
 elif diff_level == 'hard':
-    player_turns = 5
+    player_turns = 5            
 else:
     print("Error! its seems you type wrong direction.")
 
