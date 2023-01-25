@@ -39,10 +39,10 @@ total_height = 0
 amount_of_student = 0
 #Write your code below this row 👇
 for student_height in student_heights:
-  total_height += student_height          #The summation of all student height 
-  amount_of_student += 1                     
+  total_height += student_height
+  amount_of_student += 1
   
-print(round(total_height/amount_of_student))      #The average height of given students height 
+print(round(total_height/amount_of_student))
 
 
 

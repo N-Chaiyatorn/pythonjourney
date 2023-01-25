@@ -34,7 +34,7 @@ FizzBuzz
 """
 
 for number in range(1, 101):
-    isdividedby3 = bool(number % 3)                     
+    isdividedby3 = bool(number % 3) 
     isdividedby5 = bool(number % 5)
     if not isdividedby3 and not isdividedby5:
         print("FizzBuzz")

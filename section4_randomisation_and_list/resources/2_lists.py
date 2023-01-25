@@ -1,9 +1,8 @@
-# """ Python Lists """ ตัวเเปรประเภท list คล้ายๆกับ array ในภาษาC
+""" Python Lists """
 
 #               -3      -2        -1 
 #                0       1         2
 car_brands = ["ford", "toyota", "honda"]
-
 
 # think of the index as offset
 # print(car_brands[1])
@@ -12,17 +11,12 @@ car_brands = ["ford", "toyota", "honda"]
 # print(car_brands[-1])
 
 """Change items in the list"""
-# car_brands[0] = "porsche"               
-# **** warning 
-#               a = [1, 2, 3]
-#               b=a
-#               b[1] = 9
-#               print(a)            ====> a =[1, 9 , 3]
+# car_brands[0] = "porsche"
 
 # print(car_brands)
 
 """add new item in the list"""
-# car_brands.append("nissan")   or  car_brands. += "nissan" ===> ex [9 , "W"] + "R" = [9, "W", "R"]
+# car_brands.append("nissan")
 # print(car_brands)
 
 """add item list to the list"""
@@ -36,7 +30,7 @@ car_brands = ["ford", "toyota", "honda"]
 # print(len(car_brands))
 
 """nested list"""
-vehicle_lists = [car_brands, ["suzuki", "vespa"]]
+# vehicle_lists = [car_brands, ["suzuki", "vespa"]]
 
 """nested list indexing"""
-print(vehicle_lists[1][0])
+# print(vehicle_lists[1][0])

@@ -35,9 +35,9 @@ This is an even number.
 
 
 input_number = int(input(""))                
-is_remainder = bool(input_number % 2)            #The transformation input number that the remainder of The divided of input number by 2 into boolean        
+isremainder = bool(input_number % 2)       #The transformation input number the remainder of The divided of input number by 2 into boolean        
+if isremainder:
+    print("This is an odd number.")        #If isremainder is true its mean the input number cannot divided by 2 
 
-if is_remainder:
-    print("This is an odd number.")             #If isremainder is true its mean that the input number cannot divided by 2 
 else:
-    print("This is an even number.")            #If isremainder is false its mean that the input number can divided by 2 
+    print("This is an even number.")       #If isremainder is false its mean the input number can divided by 2 
