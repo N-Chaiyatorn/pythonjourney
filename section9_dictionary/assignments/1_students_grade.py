@@ -34,10 +34,22 @@ student_scores = {
 
 #TODO-1: Create an empty dictionary called student_grades.
 
+student_grades = {}
 
 #TODO-2: Write your code below to add the grades to student_grades.👇
 
-    
+for each_grade in student_scores:
+  each_student_score = student_scores[each_grade]
+  if 100 >= each_student_score >= 91:
+    student_grades[each_grade] = "Outstanding"  
+  elif each_student_score >= 81:
+    student_grades[each_grade] = "Exceeds Expectations"
+  elif each_student_score >= 71:
+    student_grades[each_grade] = "Acceptable"
+  elif each_student_score <= 70:
+    student_grades[each_grade] = "Fail"
 
 # 🚨 Don't change the code below 👇
 print(student_grades)
+
+
