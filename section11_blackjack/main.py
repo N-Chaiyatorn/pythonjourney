@@ -8,7 +8,7 @@ iswanttoplay = True
 player_information = {}               # Define player_information as the dictionary that store every player cards     
 print("Welcome to blackjack game.")
 win = "Congraduation!,you win ^_^"
-lose = "you lose T_T"
+
 
 # Each player calculating function and return the result of total point in current cards
 def checking_point(card_list):
@@ -63,8 +63,7 @@ while iswanttoplay:
                 ask_more_card = input("Do you want more card? if you want type 'y' if you don't type 'n': ")
                 if ask_more_card == 'y':
                     ismorecard = True
-                    draw_card = ace_checking(point = player_point)
-                    player_information["player"].append(draw_card)
+                    player_information["player"].append(ace_checking(point = player_point))
                 elif ask_more_card == 'n':
                     ismorecard = False
             else:
@@ -81,22 +80,21 @@ while iswanttoplay:
             
             isbotdraw = bool(random.randint(0, 1))
             if isbotdraw:
-                draw_card = ace_checking(point = computer_point)
-                player_information["computer"].append(draw_card)
+                player_information["computer"].append(ace_checking(point = computer_point))
 
         final_score()
         if player_point <= 21:
             if computer_point <= 21:
                 if computer_point > player_point:
-                    print(lose)
+                    print("you lose T_T")
                 elif computer_point == player_point:
                     print("You are draw with you rival -_-.")
                 else:
-                    print(win)
+                    print("Congraduation!,you win ^_^")
             else:
-                print(win)
+                print("Congraduation!,you win ^_^")
         else:
-            print(f"You went over,{lose}")
+            print(f"You went over, you lose T_T")
 
     elif ask_wanted_play == 'n':
         iswanttoplay = False
