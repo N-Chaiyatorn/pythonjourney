@@ -3,32 +3,36 @@ import os
 
 print(logo)
 print("Welcome to secret auction program.")
-istherebidders = True
+is_finished = False
 bidders = {}
 greatest_bid = 0
 
 
-while istherebidders:
+while not is_finished:
     
     bidder_name = input("What is your name?: ").lower()                     
     individual_bid = int(input("What is you bid?: $"))
-    bidders[individual_bid] = bidder_name                                               #Put each bidder and their bid into dictionaries name bidders 
-    isthereanybidders = input("Are there other bidder? Type 'yes' or 'no'.\n").lower()             #Asking user to continous the auction or not. 
+    bidders[bidder_name] = individual_bid                                               #Put each bidder and their bid into dictionaries name bidders 
+    is_there_any_bidders = input("Are there other bidder? Type 'yes' or 'no'.\n").lower()             #Asking user to continous the auction or not. 
+    # ?????????????????
     os.system('cls')
     
-    if isthereanybidders == "yes":
-        istherebidders = True
-    elif isthereanybidders == "no":
-        istherebidders = False                                                                      #Clear the screen of program so next bidders will not allowed to see the previous bidders name and their bid.    
+    if is_there_any_bidders == "yes":
+        is_finished = False
+    elif is_there_any_bidders == "no":
+        is_ending = input("Are you sure that there are no one wants to join this blind auction else? Type 'yes' or 'no'.\n").lower()
+        if is_ending == "yes":
+            is_finished = True                                                                      #Clear the screen of program so next bidders will not allowed to see the previous bidders name and their bid.    
     else:
         print("Its seems you type wrong answer.")
 
     # Comparison of each bidders to find who is the winner of this blind
-    if individual_bid>greatest_bid:
+    if individual_bid > greatest_bid:
         greatest_bid = individual_bid
+        highest_bidders = bidder_name
 
 
-print(f"The winner is {bidders[greatest_bid]} with a bid of ${greatest_bid}.")
+print(f"The winner is {highest_bidders} with a bid of ${greatest_bid}.")
  
 
 
