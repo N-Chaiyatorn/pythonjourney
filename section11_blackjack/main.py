@@ -2,9 +2,14 @@ from art import logo
 import random
 import os
 
+# The thing that i should be better in this code
+# 1. Variable names
+# 2. Ace checking should be one list 
+# 3. Function input
+
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 after_ten_cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-iswanttoplay = True
+is_want_to_play = True
 player_information = {}               # Define player_information as the dictionary that store every player cards     
 print("Welcome to blackjack game.")
 win = "Congraduation!,you win ^_^"
