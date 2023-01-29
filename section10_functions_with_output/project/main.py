@@ -1,31 +1,39 @@
 #Calculator
-def add(n1, n2):
+def add():
   #TODO
-  n1 = n1 + n2
-  return n1
+  number3 = number1 + number2
+  operations[operator] = number3
+  operating_print()
+  return number3
 
 
-def subtract(n1, n2):
+def subtract():
   #TODO
-  n1 = n1 - n2
-  return n1
+  number3 = number1 - number2
+  operations[operator] = number3
+  operating_print()
+  return number3
 
-def multiply(n1, n2):
+def multiply():
   #TODO
-  n1 = n1*n2
-  return n1
+  number3 = number1 * number2
+  operations[operator] = number3
+  operating_print()
+  return number3
 
-def divide(n1, n2):
+def divide():
   #TODO
-  n1 = n1/n2
-  return n1
+  number3 = number1 / number2
+  operations[operator] = number3
+  operating_print()
+  return number3
 
 #TODO map the user operand input to the functions above
 operations = {
-  "+": "todo",
-  "-": "todo",
-  "*": "todo",
-  "/": "todo",
+  "+": "TODO",
+  "-": "TODO",
+  "*": "TODO",
+  "/": "TODO",
 }
 
 def operating_print():
@@ -42,23 +50,18 @@ while iscontinous:
   operator = input("Pick an operation: ")               
   number2 = int(input("What's the next number?: "))
   if operator == "+":
-    operations[operator] = add(n1 = number1, n2 = number2)            # Put number1 and number2 variable to function called 'add()' and return the result of calculation as an output        
-    operating_print()
+    number1 = add()            # Put number1 and number2 variable to function called 'add()' and return the result of calculation as an output        
   elif operator == "-":
-    operations[operator] = subtract(n1 = number1, n2 = number2)       # Put number1 and number2 variable to function called 'subtract()' and return the result of calculation as an output
-    operating_print()
+    number1 = subtract()     # Put number1 and number2 variable to function called 'subtract()' and return the result of calculation as an output
   elif operator == "*":
-    operations[operator] = multiply(n1 = number1, n2 = number2)       # Put number1 and number2 variable to function called 'multiply()' and return the result of calculation as an output
-    operating_print()
+    number1 = multiply()     # Put number1 and number2 variable to function called 'multiply()' and return the result of calculation as an output
   elif operator == "/":
-    operations[operator] = divide(n1 = number1, n2 = number2)         # Put number1 and number2 variable to function called 'divide()' and return the result of calculation as an output
-    operating_print()
+    number1 = divide()         # Put number1 and number2 variable to function called 'divide()' and return the result of calculation as an output
 
-  ask_user = input(f"Type 'y' to continous calculating with {operations[operator]}, or type 'n' to exit.: ")
+  ask_user = input(f"Type 'y' to continous calculating with {number1}, or type 'n' to exit.: ")
 
   if ask_user == 'y':
     iscontinous = True
-    number1 = operations[operator]
 
   elif ask_user == 'n':
     iscontinous = False
