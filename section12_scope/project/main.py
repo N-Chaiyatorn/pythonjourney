@@ -12,49 +12,59 @@ import random
 from logoart import logo
 
 def turn_decrease(current_turns):
-    '''
+    """
     When player guess is wrong their turns will be decreased
-    '''
+    """
     
     current_turns -= 1
     return current_turns
 
-def higher_or_lower():
-    '''
-    Checking player answer and tell player that their answer is lower or higher
-    '''
-    if player_guess > correct_ans:
+def print_higher_or_lower(guess):
+    """
+    Checking player answer and tell player that their answer is lower or higher than correct answer.
+    """
+    if guess > CORRECT_ANS:
         print("Too high.")
-    elif player_guess < correct_ans:
+    elif guess < CORRECT_ANS:
         print("Too Low.")
 
-print(logo)
-print("Welcome to guess number game.")
-diff_level = input("What's the level do you want to play,please type 'easy' or 'hard' : ").lower()
-isremainturn = True
-correct_ans = random.randint(1, 100)        # Gets the actual answer
+def define_player_turn(game_level):
+    while True:
+        if game_level == 'easy':
+            return 10
+        elif game_level == 'hard':
+            return 5            
+        else:
+            game_level = input("Error! its seems you type wrong direction, please type the difficult level again: ").lower()
 
-# Determine player turn remaining
-if diff_level == 'easy':
-    player_turns = 10
-elif diff_level == 'hard':
-    player_turns = 5            
-else:
-    print("Error! its seems you type wrong direction.")
+# Gets the actual answer
+CORRECT_ANS = random.randint(1, 100) 
+def guess_number_game():
+    print(logo)
+    print("Welcome to guess number game.")
+    diff_level = input("What's the level do you want to play, please type 'easy' or 'hard' : ").lower()
+    is_not_finished = True
 
-while isremainturn:
-    print(f"You have {player_turns} remaining before game over.")
-    player_guess = int(input("Type your guess number: "))
+       
 
-    # The comparison between player guess and actual answer 
-    if player_guess == correct_ans:
-        isremainturn = False
-        print(f"Congraduation!, your guess is correct!,so the answer is {correct_ans}")
-    elif player_guess != correct_ans:
-        player_turns = turn_decrease(current_turns = player_turns)
-        if player_turns > 0:
-            isremainturn = True
-            higher_or_lower()            
-        elif player_turns == 0:
-            isremainturn = False
-            print("Game over!,You run out of turns.")
+    # Determine player turn remaining
+    player_turns = define_player_turn(game_level = diff_level)
+
+    while is_not_finished:
+        print(f"You have {player_turns} remaining before game over.")
+        player_guess = int(input("Type your guess number: "))
+
+        # The comparison between player guess and actual answer 
+        if player_guess == CORRECT_ANS:
+            is_not_finished = False
+            print(f"Congraduation!, your guess is correct!,so the answer is {CORRECT_ANS}")
+        elif player_guess != CORRECT_ANS:
+            player_turns = turn_decrease(current_turns = player_turns)
+            if player_turns > 0:
+                is_not_finished = True
+                print_higher_or_lower(guess = player_guess)            
+            elif player_turns == 0:
+                is_not_finished = False
+                print("Game over!, You run out of turns.")
+
+guess_number_game()
