@@ -37,6 +37,7 @@ def define_player_turn(game_level):
         else:
             game_level = input("Error! its seems you type wrong direction, please type the difficult level again: ").lower()
 
+
 CORRECT_ANS = random.randint(1, 100) 
 def guess_number_game():
     print(logo)
