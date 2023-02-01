@@ -37,8 +37,7 @@ def higher_lower_game():
         else:
             is_game_not_finished = False
             print(f"You answer is incorrect, your final point is {player_point}.")
-            if person_a == person_b:
-                print("Person A and B have equal follower counts.")
+
         
 #Create function names "battle_screen(A, B) so A and B is input dictionaries and this function will print person A and person B information to compare each other" 
 def battle_screen_print(person_a, person_b):
@@ -50,10 +49,10 @@ def battle_screen_print(person_a, person_b):
     
 
 # Create function names 'check_ans(guess, A, B)' ,in this function will check about player guess if their answer is correct so the function will return True, if the answer is incorrect then the function will return False
-def check_ans(guess, person_a, person_b):   
-    if guess == 'A' and person_a['follower_count'] > person_b['follower_count']:
+def check_ans(player_ans, person_a, person_b):   
+    if player_ans == 'A' and person_a['follower_count'] > person_b['follower_count']:
         return True
-    elif guess == 'B' and person_a['follower_count'] < person_b['follower_count']:
+    elif player_ans == 'B' and person_a['follower_count'] < person_b['follower_count']:
         return True
     else:
         return False
