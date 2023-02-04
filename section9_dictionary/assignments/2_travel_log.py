@@ -32,7 +32,6 @@ def add_new_country(country, times, cities):
     """
     Add new dicrectories to travel_log
     """
-    
     additional_country ={
         "country": country,
         "visits": times,
