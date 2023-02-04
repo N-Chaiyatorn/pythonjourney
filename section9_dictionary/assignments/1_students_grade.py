@@ -40,18 +40,14 @@ student_grades = {}
 
 for each_grade in student_scores:
   each_student_score = student_scores[each_grade]
-  if each_student_score <= 100:
-    if each_student_score >= 91:
-      student_grades[each_grade] = "Outstanding"  
-    elif each_student_score >= 81:
-      student_grades[each_grade] = "Exceeds Expectations"
-    elif each_student_score >= 71:
-      student_grades[each_grade] = "Acceptable"
-    else:
-      student_grades[each_grade] = "Fail"
+  if each_student_score >= 91:
+    student_grades[each_grade] = "Outstanding"  
+  elif each_student_score >= 81:
+    student_grades[each_grade] = "Exceeds Expectations"
+  elif each_student_score >= 71:
+    student_grades[each_grade] = "Acceptable"
   else:
-    student_grades[each_grade] = "Out of range"
-
+    student_grades[each_grade] = "Fail"
 
 # 🚨 Don't change the code below 👇
 print(student_grades)

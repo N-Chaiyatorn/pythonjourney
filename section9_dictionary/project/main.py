@@ -36,7 +36,4 @@ while not is_finished:
         highest_bidders = bidder_name
 
 
-print(f"The winner is {highest_bidders} with a bid of ${greatest_bid}.")
- 
-
-
+print(f"The winner is {highest_bidders} with a bid of ${greatest_bid}.") 
