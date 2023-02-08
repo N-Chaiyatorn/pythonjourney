@@ -14,7 +14,6 @@ class QuizBrain:
         self.scores = 0
 
     def next_question(self, question_number, question_list):
-        quizbrain.question_number += 1
         
         return input(f"Q.{question_number} {question_list}, so the answer is (True/False) : ")
 
@@ -32,7 +31,6 @@ class QuizBrain:
             print(f"You got it right!!, the answer is {actual_ans}")
             print(f"Your current scores is {current_score}/{question_number}")
             return current_score
-
         else:
             print(f"Incorrect!!!, the answer is {actual_ans}")
             print(f"Your current scores is {current_score}/{question_number}")
