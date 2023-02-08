@@ -2,10 +2,8 @@
 from data import question_data
 from question_model import Question
 from quiz_brain import QuizBrain
-
 # Create a list of the Question objects called question_bank, using the data from question_data
 question_bank = question_data
-
 # Instantiate QuizBrain object and pass the question_bank to it
 quizbrain = QuizBrain(question_bank)
 

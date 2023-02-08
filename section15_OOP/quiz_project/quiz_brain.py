@@ -31,6 +31,7 @@ class QuizBrain:
             print(f"You got it right!!, the answer is {actual_ans}")
             print(f"Your current scores is {current_score}/{question_number}")
             return current_score
+        
         else:
             print(f"Incorrect!!!, the answer is {actual_ans}")
             print(f"Your current scores is {current_score}/{question_number}")
