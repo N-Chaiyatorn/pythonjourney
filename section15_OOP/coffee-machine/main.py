@@ -19,7 +19,6 @@ def coffee_machine():
         if can_make:
             is_there_enough_money = moneymachine.make_payment(cost = orderinformation.cost)
             if is_there_enough_money:
-                # 
                 coffeemaker.make_coffee(order = orderinformation)
 
 coffee_machine()                 
