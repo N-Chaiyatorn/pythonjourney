@@ -8,34 +8,29 @@
 # implement the method called check_answer which will check the answer and updscoate the score, also print the correct answer and current score to the user
 
 class QuizBrain:
+    
     def __init__(self, question_list):
         self.question_number = 0
         self.question_list = question_list
         self.scores = 0
 
-    def next_question(self, question_number, question_list):
-        
-        return input(f"Q.{question_number} {question_list}, so the answer is (True/False) : ")
+    def next_question(self):
+        self.question_number += 1
+        return input(f"Q.{self.question_number} {self.question_list[self.question_number - 1].text}, so the answer is (True/False) : ")
 
-    def still_has_question(self, question_number, question_amount, current_score):
-        if question_number < question_amount:
-            return True
-        else:
-            print("You've finished this quiz.")
-            print(f"You final score is {current_score}/{question_amount}.")
-            return False
-
-    def check_answer(self, actual_ans , input_question_ans, question_number, current_score):
-        if actual_ans == input_question_ans:
-            current_score += 1
-            print(f"You got it right!!, the answer is {actual_ans}")
-            print(f"Your current scores is {current_score}/{question_number}")
-            return current_score
+    def still_has_question(self):
+        return self.question_number < len(self.question_list)
+            
+    def check_answer(self, user_ans):
+        if self.question_list[self.question_number - 1].answer == user_ans:
+            self.scores += 1
+            print(f"You got it right!!, the answer is {self.question_list[self.question_number - 1].answer}")
+            print(f"Your current scores is {self.scores}/{self.question_number}")
         
         else:
-            print(f"Incorrect!!!, the answer is {actual_ans}")
-            print(f"Your current scores is {current_score}/{question_number}")
-            return current_score
+            print(f"Incorrect!!!, the answer is {self.question_list[self.question_number - 1].answer}")
+            print(f"Your current scores is {self.scores}/{self.question_number}")
+
 
         
 
