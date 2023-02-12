@@ -6,7 +6,6 @@
 # implement the method called still_has_question which return Boolean, return True if there are the questions left and False if all the questions are asked
 
 # implement the method called check_answer which will check the answer and updscoate the score, also print the correct answer and current score to the user
-
 class QuizBrain:
     
     def __init__(self, question_list):

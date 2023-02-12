@@ -19,4 +19,5 @@ while quizbrain.still_has_question():
         user_ans = quizbrain.next_question()
         quizbrain.check_answer(user_ans)
 
+
 print_final_scores()
