@@ -7,5 +7,6 @@ student_dict = {
 
 student_dataframe = pandas.DataFrame(student_dict)
 
+# .iterrows เป็นการไล่ loop ส่วน
 for (index, row) in student_dataframe.iterrows():
     print(row.score)
