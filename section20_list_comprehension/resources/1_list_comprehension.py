@@ -23,26 +23,29 @@
 # print(new_list_3)
 
 # filter file_1.txt and file_2.txt overlapped number
-
-
-
+# with open("/Gittest/Python study/pythonjourney/section20_list_comprehension/resources/file_1.txt") as file1, open("/Gittest/Python study/pythonjourney/section20_list_comprehension/resources/file_2.txt") as file2:
+#     file1_list = file1.read().split("\n")
+#     file2_list = file2.read().split("\n")
+#     overlapped_number_list = [number for number in file1_list if number in file2_list]
+#     print(overlapped_number_list)
+        
 # Dictionary comprehension
-names = ["Pan", "Jean"]
-import random
-student_scores = {student:random.randint(1, 100) for student in names}   # เป้นการไล่ loop for โดยการ    
-passed_student = {student:score for (student, score) in student_scores.items() if score >= 60}
+# names = ["Pan", "Jean"]
+# import random
+# student_scores = {student:random.randint(1, 100) for student in names}   # เป้นการไล่ loop for โดยการ    
+# passed_student = {student:score for (student, score) in student_scores.items() if score >= 60}
 
-weather_c = {
-    "Sunday": 20.7,
-    "Monday": 25.1,
-    "Tuesday": 26.2,
-    "Wednesday": 26.0,
-    "Thursday":24.9,
-    "Friday":23.7,
-    "Saturday":24.3
-}
+# weather_c = {
+#     "Sunday": 20.7,
+#     "Monday": 25.1,
+#     "Tuesday": 26.2,
+#     "Wednesday": 26.0,
+#     "Thursday":24.9,
+#     "Friday":23.7,
+#     "Saturday":24.3
+# }
 
-# make weather_c to be in farenheit
+# # make weather_c to be in farenheit
 
-weather_f = {day:round((celcius * 9/5) + 32, 2) for (day, celcius) in weather_c.items()}
-print(weather_f)
+# weather_f = {day:round((celcius * 9/5) + 32, 2) for (day, celcius) in weather_c.items()}
+# print(weather_f)
