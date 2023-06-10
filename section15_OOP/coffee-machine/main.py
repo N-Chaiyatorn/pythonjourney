@@ -11,14 +11,13 @@ def coffee_machine():
     money_machine = MoneyMachine()
     while True: 
         # Input user order
-        order_name = input(f"Welcome!!! what would you like today? {menu.get_items()}: ")
+        order_name = input(f"Welocome!!! what would you like today? {menu.get_items()}: ")
         # Define Every required information of user order
-        ordered_item = menu.find_drink(order_name)
+        ordered_coffee = menu.find_drink(order_name)
         # Check the resource if there are some resource left the program will make a coffee and change the money to user
-        if coffee_maker.is_resource_sufficient(drink = ordered_item):
-            is_there_enough_money = money_machine.make_payment(cost = ordered_item.cost)
-            if is_there_enough_money:
-                coffee_maker.make_coffee(order = ordered_item)
+        if coffee_maker.is_resource_sufficient(drink = ordered_coffee):
+            if money_machine.make_payment(cost = ordered_coffee.cost):
+                coffee_maker.make_coffee(order = ordered_coffee)
 
 coffee_machine()                 
     

@@ -8,6 +8,7 @@
 # implement the method called check_answer which will check the answer and updscoate the score, also print the correct answer and current score to the user
 
 class QuizBrain:
+    
     def __init__(self, question_list):
         self.question_number = 0
         self.question_list = question_list
@@ -15,26 +16,22 @@ class QuizBrain:
 
     def next_question(self):
         self.question_number += 1
-        return input(f"Q.{self.question_number} {question.text}, so the answer is (True/False) : ")
 
-    def still_has_question(self, question_amount):
-        if self.question_number < question_amount:
-            return True
-        else:
-            print("You've finished this quiz.")
-            print(f"You final score is {self.scores}/{question_amount}.")
-            return False
+        return input(f"Q.{self.question_number} {self.question_list[self.question_number - 1].text}, so the answer is (True/False) : ")
 
-    def check_answer(self, input_question_ans, question):
-        if question.answer == input_question_ans:
+    def still_has_question(self):
+        return self.question_number < len(self.question_list)
+            
+    def check_answer(self, user_ans):
+        if self.question_list[self.question_number - 1].answer == user_ans:
             self.scores += 1
-            print(f"You got it right!!, the answer is {question.answer}")
+            print(f"You got it right!!, the answer is {self.question_list[self.question_number - 1].answer}")
             print(f"Your current scores is {self.scores}/{self.question_number}")
         
         else:
-            print(f"Incorrect!!!, the answer is {question.answer}")
+            print(f"Incorrect!!!, the answer is {self.question_list[self.question_number - 1].answer}")
             print(f"Your current scores is {self.scores}/{self.question_number}")
-            return self.scores
+
 
         
 
