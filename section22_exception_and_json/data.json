@@ -1,0 +1,10 @@
+{
+    "Toyota": {
+        "color": "black",
+        "year": 2012
+    },
+    "Isuzu": {
+        "color": "blue",
+        "year": 2014
+    }
+}
