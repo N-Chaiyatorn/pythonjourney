@@ -12,8 +12,9 @@ screen.listen()         # ตั้ง screen ไว้คอย listen
 
 # Higher Order Function (HOF)
 # คือ function ที่มี อีก function ในค่า input ของ function
-screen.onkey(key="space", fun=move_forward)        # ข้อควรระวังไม่ควรใส่วงเล็บเข้าไปใน function ที่เรา input เข้าไปเด็ดขาด     
-screen.exitonclick()
+
+# screen.onkey(key="space", fun=move_forward)        # ข้อควรระวังไม่ควรใส่วงเล็บเข้าไปใน function ที่เรา input เข้าไปเด็ดขาด     
+# screen.exitonclick()
 
 
 # Challenge
