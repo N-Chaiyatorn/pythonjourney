@@ -1,5 +1,6 @@
 import json
 import pandas
+import os
 
 class DataFileGenerator():
     def __init__(self, data):
@@ -10,6 +11,7 @@ class DataFileGenerator():
         while True:
             try:
                 self.file_type = input("What's file do you want to store your data (csv/json/txt): ")
+                os.system('cls')
                 if self.file_type != 'csv' and self.file_type != 'json' and self.file_type != 'txt':
                     raise ValueError("Only 'csv' or 'json' or 'txt' file are allowed.")
             except ValueError:
@@ -35,15 +37,20 @@ class DataFileGenerator():
     def generate_csv_file(self):
         data_frame = pandas.DataFrame(self.dict_data)
         csv_file_name = input("Please type your csv file names: ")
+        os.system('cls')
         data_frame.to_csv(f"/Gittest/my_project/encrypt_project/{csv_file_name}.csv")
         print(f"Your result is:\n{data_frame}")
 
     def generate_json_file(self):
         json_file_name = input("Please type your json file names: ")
+        os.system('cls')
         with open(f"/Gittest/my_project/encrypt_project/{json_file_name}.json", "w") as file:
             json.dump(self.dict_data, file, indent = 7)
+        print(f"Your result is:\n{self.dict_data}")
 
     def generate_txt_file(self):
         txt_file_name = input("Please type your txt file names: ")
+        os.system('cls')
         with open(f"/Gittest/my_project/encrypt_project/{txt_file_name}.txt", "w") as file:
             file.write(str(self.dict_data))
+        print(f"Your result is:\n{self.dict_data}")
