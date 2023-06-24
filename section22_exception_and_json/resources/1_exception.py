@@ -63,6 +63,7 @@ facebook_posts = [
     {'Likes': 19, 'Comments': 3}
 ]
 
+
 total_likes = 0
 for post in facebook_posts:
     try:
