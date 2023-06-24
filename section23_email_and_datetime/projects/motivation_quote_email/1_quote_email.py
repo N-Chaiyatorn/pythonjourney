@@ -1,0 +1,1 @@
+# write a program which will randomly send 1 quote in the 1_quotes.txt file if it is on monday
