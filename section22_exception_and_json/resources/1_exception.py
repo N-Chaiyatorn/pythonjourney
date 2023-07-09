@@ -63,10 +63,7 @@ facebook_posts = [
     {'Likes': 19, 'Comments': 3}
 ]
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5e606fc5e4a575f62ae45ab306dd88d4d0fec25d
 total_likes = 0
 for post in facebook_posts:
     try:
