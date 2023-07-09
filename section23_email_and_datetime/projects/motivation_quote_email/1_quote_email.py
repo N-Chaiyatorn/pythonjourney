@@ -74,9 +74,9 @@ day = currently_datatime.weekday()
 # command line that if the email sending is successful or not. 
 if day == 0:
     quotes_data_managers.choose_random_quote()
-    connection.sendmail(from_addr = my_email, to_addrs = "jeanandaim007@gmail.com", msg = f"Subject:Monday's motivation quote.\n\n {quotes_data_managers.randomaly_quote}\n\n Said by {quotes_data_managers.randomaly_name}.")
+    connection.sendmail(from_addr = my_email, to_addrs = "pan289277@gmail.com", msg = f"Subject:Monday's motivation quote.\n\n {quotes_data_managers.randomaly_quote}\n\n Said by {quotes_data_managers.randomaly_name}.")
     print("Email have been sending.")
-    
+
 else:
     print("Today is not Mondays and your's email haven't been send today.")
 
