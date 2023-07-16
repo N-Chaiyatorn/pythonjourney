@@ -3,7 +3,7 @@ import requests
 
 # https://pixe.la/
 PIXELA_ENDPOINNT = "https://pixe.la/v1/users"
-USERNAME = teeee
+USERNAME = "Pan"
 TOKEN = "asdiuqjwpasd"
 
 # create user
@@ -14,7 +14,7 @@ user_params = {
     "notMinor": "yes"
 }
 
-response = requests.post(url=PIXELA_ENDPOINNT, params=user_params)
+response = requests.post(url=PIXELA_ENDPOINNT, json=user_params)
 
 
 # create graph

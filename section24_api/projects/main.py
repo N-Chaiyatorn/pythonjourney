@@ -14,13 +14,14 @@
 # 2. you can only see the ISS during the night time (before sunrise time, after sunset time)
 
 # BONUS: run the code every 60 seconds.
-
 import requests
 import datetime as dt
 import smtplib
 from geopy.geocoders import Nominatim
 import schedule
 import time
+import random
+
 
 USER_LOCATION = "Ladkrabang"
 
@@ -142,12 +143,15 @@ def iss_detecting_program():
     print(f"\n This time is {now.time()} and today sunrise time is {sunrise_sunset_data['results']['sunrise']}, sunset time is {sunrise_sunset_data['results']['sunset']}")
 
     if is_night_time and is_iss_over_user_head:
+        print("\nYou can see Iss satellite now.\nYou should don't miss this.")
         connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = "Subject:You can see Iss satellite now!!\n\nThis time you can see Iss satellite in the sky at your location now.\nDon't miss them!!!.")
     else:
         print("\nYou can't see Iss satellite now.")
 
-schedule.every(60).seconds.do(iss_detecting_program)
 
+schedule.every(60).seconds.do(iss_detecting_program)
 while True:
     schedule.run_pending()
     time.sleep(1)
+
+

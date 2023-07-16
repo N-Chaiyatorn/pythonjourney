@@ -1,9 +1,11 @@
-STOCK = "TSLA"
+STOCK = "TSLA"              # คือ symbol
 COMPANY_NAME = "Tesla Inc"
 
+# (check api ของราคาหุ้น เเล้วส่งมาใน sms)
 ## STEP 1: Use https://www.alphavantage.co
-# When STOCK price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
+# When STOCK price increase/decreases by 5% (จริงๆเท่าไหร่ก็ได้) between yesterday and the day before yesterday then print("Get News").
 
+# (check หัวข้อข่าว)
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
 
