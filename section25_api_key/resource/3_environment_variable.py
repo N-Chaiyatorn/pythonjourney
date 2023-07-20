@@ -9,5 +9,3 @@ api_key = os.environ.get("API_KEY")             # "API_KEY" คือ environmen
 print(api_key)
 
 # bonus, other api: https://apilist.fun/
-
-# Follow this link to define or set new  https://docs.oracle.com/en/database/oracle/machine-learning/oml4r/1.5.1/oread/creating-and-modifying-environment-variables-on-windows.html#GUID-DD6F9982-60D5-48F6-8270-A27EC53807D0

@@ -9,40 +9,75 @@
 # 3. check out the response in the json viewer
 # 4. check out the hourly weather in next 48 hours
 
-# import requests
-# from geopy.geocoders import Nominatim
-# from datetime import datetime
+import requests
+import os
+import pandas
+from geopy.geocoders import Nominatim
+import datetime as dt
 
-# position_detection = Nominatim(user_agent = "...")
-# location_data = position_detection.geocode("Ladprao")
-# now = datetime.now()
+# Determine class named 'DataManager' to manage and update data.
 
-# parameter = {
-#     "lat":location_data.latitude,
-#     "lon":location_data.longitude,
-#     "appid":"5cb771a217c6b8f1a43a3942911178ee",
-#     "exclude":["minutely","current","daily","alerts"]
-# }
+class DataManager():
+    def __init__(self):
+        self.data_dict = {}
+        self.column_list = []
+        self.dataframe = None
 
-# response = requests.get(url = "https://api.openweathermap.org/data/3.0/onecall?", params = parameter)
-# print(f"respond of request sending is {response}")
-# print(f"Status code is {response.status_code}")
-# data = response.json()
-# print(data)
+    def gets_column_list(self, weather_data):
+        """"""
+        self.column_list.append('date')
+        self.column_list.append('time')
 
-# print(f"The weather in next 48 hours is: ")
+        for weather_col in weather_data:
+            self.column_list.append(weather_col)
 
-# hours = int(now.hour)
+    def creating_data_dict(self):
+        self.data_dict = {column:[] for column in self.column_list}
 
-# for i in data['hourly']:
-#     if hours >= 24:
-#         hours = 0
-#     print(f"\nThe weather in {hours} is:\n {i['weather']}")
-#     hours += 1
+    def update_data_dict(self, weather_data_in_each_hours, time_data):
+        self.data_dict['date'].append(str(time_data.date()))
+        self.data_dict['time'].append(str(time_data.hour) + ':00')
+
+        for col in weather_data_in_each_hours:
+            self.data_dict[col].append(weather_data_in_each_hours[col])
+
+    def creating_dataframe(self):
+        self.dataframe = pandas.DataFrame(self.data_dict)
+
+def display_result(data_manager):
+    print(f"The result is \n\n{data_manager.dataframe}")
 
 
+town_name = input("Please type your town name: ")
+
+data_manager = DataManager()
+
+position_detection = Nominatim(user_agent = "...")
+location_data = position_detection.geocode(town_name)
+
+now = dt.datetime.now()
+api_key = os.environ.get("weather_api_key")
+
+parameter = {
+    "lat":location_data.latitude,
+    "lon":location_data.longitude,
+    "appid":api_key,
+    "exclude":["minutely","current","daily","alerts"]
+}
+
+response = requests.get(url = "https://api.openweathermap.org/data/3.0/onecall?", params = parameter)
+print(f"respond of request sending is {response}")
+print(f"Status code is {response.status_code}")
+data = response.json()
+time_data = now
+
+data_manager.gets_column_list(weather_data = data['hourly'][0]['weather'][0])
+data_manager.creating_data_dict()
+
+for hourly_data in data['hourly']:
+    data_manager.update_data_dict(weather_data_in_each_hours = hourly_data['weather'][0], time_data = time_data)
+    time_data += dt.timedelta(hours = 1)
 
 
-# quiz 2: Use One Call API hourly data to check if it will rain in the next 12 hours
-# hint 1: Read the api doc and try to understand how the data is structured
-# hint 2: weather code https://openweathermap.org/weather-conditions#Weather-Condition-Cod
+data_manager.creating_dataframe()
+display_result(data_manager = data_manager)
