@@ -1,4 +1,5 @@
 from twilio.rest import Client
+import os
 
 class SmsSendingMachine():
     def __init__(self) -> None:
@@ -11,7 +12,7 @@ class SmsSendingMachine():
 
     def sending_sms(self):
         account_sid = 'ACb1281026ebff5f53909bdf56891972a7'
-        auth_token = '30f8a37ece7d32d3a1f6d3a108becccf'
+        auth_token = os.environ.get('auth_token')
         client = Client(account_sid, auth_token)
         message = client.messages.create(from_ = '+16187423072',
                 body = self.sms_body,

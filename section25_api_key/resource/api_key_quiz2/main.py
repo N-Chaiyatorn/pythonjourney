@@ -9,14 +9,14 @@ from sms_sending_machine import SmsSendingMachine
     
 
 def display_result(data_manager):
-    """Print the result of weathers in next 48 hours."""
+    """Print the result of weathers in next 12 hours."""
     print(f"\nThe result is \n\n{data_manager.dataframe}")
 
 
-# Input user's town
+# Input user's town.
 town_name = input("Please type your town name: ")
 
-# Determine 'data_manager' object
+# Determine every objects.
 data_manager = DataManager()
 file_manager = FileManager()
 sms_sending_machine = SmsSendingMachine()

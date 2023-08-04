@@ -6,7 +6,7 @@ import datetime as dt
 from data_manager import DataManager
 from sms_sending_machine import SmsSendingMachine
 
-# Determine 'data_manager' object
+# Determine every objects.
 data_manager = DataManager()
 sms_sending_machine = SmsSendingMachine()
 
@@ -36,7 +36,7 @@ data = response.json()
 # Determine time variable to store every hours in time data.
 time_data = now
 
-# Determine dataframe column and creating in initial data dictionary.
+# Determine dataframe column and creating initial data dictionary.
 data_manager.gets_column_list(weather_data = data['hourly'][0]['weather'][0])
 
 empty_data_dict = data_manager.creating_empty_data_dict()
@@ -58,6 +58,7 @@ for hourly_data in data['hourly']:
 
 rainning_time_dataframe = data_manager.getting_raining_time_dataframe()
 
+# If in next 12 hours the rain will occur, so this program will send notification to user's sms.
 if not rainning_time_dataframe.empty:
     sms_sending_machine.creating_body_text(rainning_time_dataframe = rainning_time_dataframe)
     sms_sending_machine.sending_sms()
