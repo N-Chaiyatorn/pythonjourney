@@ -4,7 +4,7 @@
 from twilio.rest import Client
 import random
 
-
+g = "hello"
 
 account_sid = 'ACb1281026ebff5f53909bdf56891972a7'
 auth_token = 'd2e13427493220101845f359d7a25138'
@@ -12,8 +12,8 @@ client = Client(account_sid, auth_token)
 
 message = client.messages.create(
   from_='+16187423072',
-  body='Good night from Pan',
-  to='+66655163261'
+  body=g,
+  to='+6622359494'
 )
 
 print(message.sid)
