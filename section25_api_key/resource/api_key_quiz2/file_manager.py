@@ -9,6 +9,7 @@ class FileManager():
         while True:
             try: 
                 self.csv_file_name = input("Type your csv file name that you have considered: ")
+                
                 if "csv" not in self.csv_file_name.split(".") or "." not in list(self.csv_file_name):
                     raise ValueError()
 

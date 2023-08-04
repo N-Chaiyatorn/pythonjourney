@@ -42,22 +42,21 @@ data_manager.gets_column_list(weather_data = data['hourly'][0]['weather'][0])
 empty_data_dict = data_manager.creating_empty_data_dict()
 data_manager.dataframe = pandas.DataFrame(empty_data_dict)
 
-total_hours = 0 
+total_storaged_hours = 0 
 
 # Adding data to dictionary.
 for hourly_data in data['hourly']:
     data_manager.getting_lastest_row_data_dict(weather_data_in_each_hours = hourly_data['weather'][0], time_data = time_data)
     data_manager.dataframe = pandas.concat([data_manager.dataframe, pandas.DataFrame(data_manager.lastest_row_dict)])
 
-    total_hours += 1
+    total_storaged_hours += 1
 
-    if total_hours == 12:
+    if total_storaged_hours == 12:
         break
 
     time_data += dt.timedelta(hours = 1)
 
 rainning_time_dataframe = data_manager.getting_raining_time_dataframe()
-print(data_manager.dataframe)
 
 if not rainning_time_dataframe.empty:
     sms_sending_machine.creating_body_text(rainning_time_dataframe = rainning_time_dataframe)
