@@ -2,29 +2,20 @@ import pandas
 
 class DataFileManagement():
 
-    def __init__(self):
-        pass
-
-
     def print_invalid_input_with_y_and_n(self):
         print("Invalid input!!!. Only 'y' and 'n' are allowed.")
 
     def asking_is_adding_data_to_file(self):
         while True:
-            try:
-                is_adding_data = input("Do you want to add some data to your file? (y/n): ")
-
-                if is_adding_data != 'y' and is_adding_data != 'n':
-                    raise ValueError() 
+            is_adding_data = input("Do you want to add some data to your file? (y/n): ")
             
-            except ValueError:
-                self.print_invalid_input_with_y_and_n()
-            
-            else:
-                if is_adding_data == 'y':
-                    return True
-                elif is_adding_data == 'n':
-                    return False
+            if is_adding_data != 'y' and is_adding_data != 'n':
+                raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
+             
+            if is_adding_data == 'y':
+                return True
+            elif is_adding_data == 'n':
+                return False
 
 
     def delete_index_column(self, birthday_data_file):
@@ -48,30 +39,23 @@ class DataFileManagement():
         return pandas.DataFrame(data_dict)
     
     def is_reset_data_frame(self):
-        while True:
-            try:
-                reset_data = input("Do you want to reset all data from your data file? (y/n): ")
-                if reset_data != 'n' and reset_data != 'y':
-                    raise ValueError()
-            except ValueError:
-                self.print_invalid_input_with_y_and_n()
-            else:
-                if reset_data == 'y':
-                    return True
-                elif reset_data == 'n':
-                    return False
+        reset_data = input("Do you want to reset all data from your data file? (y/n): ")
+
+        if reset_data != 'n' and reset_data != 'y':
+            raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
+            
+        if reset_data == 'y':
+            return True
+        elif reset_data == 'n':
+            return False
                 
     def is_more_data(self):
-        try:
-            is_continue = input("Do you want to adding more data to birthday.csv file? (y/n): ")
-            if is_continue != 'y' and is_continue != 'n':
-                raise ValueError()
+        is_continue = input("Do you want to adding more data to birthday.csv file? (y/n): ")
+
+        if is_continue != 'y' and is_continue != 'n':
+            raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
         
-        except ValueError:
-            self.print_invalid_input_with_y_and_n()
-        
-        else:
-            if is_continue == 'y':
-                return True
-            elif is_continue == 'n':
-                return False
+        if is_continue == 'y':
+            return True
+        elif is_continue == 'n':
+            return False

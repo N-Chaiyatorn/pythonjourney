@@ -10,19 +10,13 @@ class User():
     
     def input_data(self, date_analyse_machine, days_of_month):
         self.name = input("Type name: ")
-        while True:
-            try:
-                self.email = input(f"Type {self.name} email address (If {self.name} don't have please type 'none'): ")
-                os.system('cls')
+        
+        self.email = input(f"Type {self.name} email address (If {self.name} don't have please type 'none'): ")
+        os.system('cls')
 
-                if "@" not in list(self.email) and self.email != 'none':
-                    raise ValueError()
+        if "@" not in list(self.email) and self.email != 'none':
+            raise ValueError(f"Invalid email input, your input is {self.email}. So it require '@'.")
                 
-            except ValueError:
-                print(f"Invalid email input, your input is {self.email}. So it require '@'.")
-            else:
-                break
-
         while True:
             try:
                 print("Type your birthday in this below.")
@@ -31,7 +25,6 @@ class User():
                 self.year = int(input(f"Type {self.name} birth years: "))
                 os.system('cls')
 
-                
                 is_leap_years = date_analyse_machine.is_leap_years(birth_years = self.year)
 
                 if self.year > 5000:
