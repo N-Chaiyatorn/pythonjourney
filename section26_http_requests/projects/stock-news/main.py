@@ -83,6 +83,7 @@ if tesla.percentage_diff_price >= 5 or tesla.percentage_diff_price <= -5:
 ## STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
     # Sending 3 sms to user's phone.
+    
     show_send_sms_news(sms_sendor = sms_sendor)
     sms_sendor.sending_sms(auth_token = auth_token)
 

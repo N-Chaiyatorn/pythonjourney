@@ -11,12 +11,11 @@ class SmsSendor():
 {stock}:{percent_diff_text}
 Headline:{news["title"]}
 description:{news["description"]}"""
-    
             self.send_sms_massage_list.append(news_article)
 
     def sending_sms(self, auth_token):
         account_sid = 'ACb1281026ebff5f53909bdf56891972a7'
-            
+           
         client = Client(account_sid, auth_token)
         sms_number = 1
         for sms_massage in self.send_sms_massage_list:
