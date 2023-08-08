@@ -30,14 +30,13 @@ class Tesla():
         "qInTitle":"Stock price",
         "from":self.initial_days_of_news,
         "language":"en"
-
     }
-
+        
         response = requests.get(url = "https://newsapi.org/v2/everything?", params = news_params)
         return response.json()
     
     def getting_filtered_news_list(self, every_tesla_news, the_amount_of_news = 3):
-
+        
         total_news = 0
         self.filtered_news_list = []
 
