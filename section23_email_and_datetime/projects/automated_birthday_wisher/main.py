@@ -85,11 +85,11 @@ if is_adding_data:
             break
 
     data_frame.to_csv(birthday_data_file, index = False)  
-    print(f"Your result data is \n\n{data_frame}\n")
+    print(f"Your result data is: \n\n{data_frame}\n")
       
 # 2. Check if today matches a birthday in the birthdays.csv
 data_frame_ulits.update_user_today_birthday_dataframe(data_frame = data_frame)
-print(data_frame_ulits.related_birthday_dataframe)
+print(f"Below are the person that their's birthdays are today: \n\n{data_frame_ulits.related_birthday_dataframe}")
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
 if not data_frame_ulits.related_birthday_dataframe.empty:
@@ -110,4 +110,4 @@ connection = smtplib.SMTP("smtp.gmail.com", port = 587)
 connection.starttls()
 connection.login(user = my_email, password = password)
 
-email_sendor.sending_emails(sendor_email = my_email, password = password, connection = connection)
+email_sendor.sending_emails(sendor_email = my_email, connection = connection)

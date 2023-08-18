@@ -14,6 +14,5 @@ class DateUtils():   # ควรใช้ DateAnalyser
         print("Type your birthday in this below.")
 
         user_birthday = input(f"Type {user_name} birthdays in format (YYYY-MM-DD): ")
-        datetime = dt.datetime.strptime(user_birthday, "%Y-%m-%d")
-
-        return datetime.date()
+        
+        return user_birthday
