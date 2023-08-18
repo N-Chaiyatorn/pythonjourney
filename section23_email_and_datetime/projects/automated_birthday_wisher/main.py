@@ -1,14 +1,32 @@
 # 1. Update the birthdays.csv
 import os
 import pandas
+from data_frame_utils import DataFrameUtils
+from email_sendor import EmailSendor
+import smtplib
 import datetime as dt
-from date_analyse_machine import DateAnalyseMachine
-from data_file_management import DataFileManagement
+from date_utils import DateUtils
+from data_file_service import DataFileService
 from user import User
 import random
-import smtplib
+from validate_email import validate_email
 
-DAYS_OF_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+def validation_email(email):
+    is_valid = validate_email(email = email)
+
+    if not is_valid:
+        raise ValueError("Invalid email address.")
+
+def is_more_data_in_dataframe():
+    is_continue = input("Do you want to adding more data to birthday.csv file? (y/n): ")
+
+    if is_continue != 'y' and is_continue != 'n':
+        raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
+        
+    if is_continue == 'y':
+        return True
+    elif is_continue == 'n':
+        return False
 
 reciever_email_information = {}
 
@@ -22,26 +40,46 @@ letter_3_file = "/Gittest/python_learning_after_sec_21/pythonjourney/section23_e
 
 text_file_location_list = [letter_1_file, letter_2_file, letter_3_file]
 
-date_analyse_machine = DateAnalyseMachine()
-data_file_management = DataFileManagement()
+date_ulits = DateUtils()
+date_file_service = DataFileService()
+data_frame_ulits = DataFrameUtils()
+email_sendor = EmailSendor()
 
-data_frame = data_file_management.delete_index_column(birthday_data_file = birthday_data_file)
+# Getting birthday data file.
+try:
+    data_frame = pandas.read_csv(birthday_data_file)
 
+except pandas.errors.EmptyDataError:
+    data_frame = data_frame_ulits.get_empty_data_frame()
+    data_frame.to_csv(birthday_data_file, index = False)
+
+data_frame_ulits.related_birthday_dataframe = data_frame_ulits.get_empty_data_frame()
+
+# Telling user about current data from this file.
 print(f"Your current data is: \n\n {data_frame}\n")
-is_reset_data_frame = data_file_management.is_reset_data_frame()
+is_reset_data_frame = data_frame_ulits.is_reset_data_frame()
 os.system('cls')
 
 if is_reset_data_frame:
-    data_frame = data_file_management.reset_data_frame()
+    data_frame = data_frame_ulits.get_empty_data_frame()
 
-is_adding_data = data_file_management.asking_is_adding_data_to_file()
+is_adding_data = date_file_service.asking_is_adding_data_to_file()
 
 if is_adding_data:
     while True:
         user = User()
-        user.input_data(date_analyse_machine = date_analyse_machine, days_of_month = DAYS_OF_MONTH)
-        data_frame = data_file_management.add_data_to_dataframe(user.name, user.email, user.year, user.month, user.day, data_frame)
-        is_more_data = data_file_management.is_more_data()
+        user.name = input("Type name: ")
+        user.email = input(f"Type {user.name} email address (If {user.name} don't have please type 'none'): ")
+
+        validation_email(email = user.email)
+
+        user.birthdays = date_ulits.get_user_birthday(user_name = user.name)
+        os.system('cls')
+        
+        data_frame = data_frame_ulits.add_new_row_data_to_data_frame(user = user, data_frame = data_frame)
+        is_more_data = is_more_data_in_dataframe()
+        
+        
 
         if not is_more_data:
             break
@@ -50,19 +88,19 @@ if is_adding_data:
     print(f"Your result data is \n\n{data_frame}\n")
       
 # 2. Check if today matches a birthday in the birthdays.csv
-now = dt.datetime.now()
-related_birthday_dataframe = date_analyse_machine.get_user_today_birthday_dataframe(data_frame = data_frame, now = now)
-print(related_birthday_dataframe)
+data_frame_ulits.update_user_today_birthday_dataframe(data_frame = data_frame)
+print(data_frame_ulits.related_birthday_dataframe)
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
-if not related_birthday_dataframe.empty:
-    for (index, row) in related_birthday_dataframe.iterrows():
+if not data_frame_ulits.related_birthday_dataframe.empty:
+    for (index, row) in data_frame_ulits.related_birthday_dataframe.iterrows():
         with open(random.choice(text_file_location_list)) as file:
             text = file.read()
-            text_seperated_list = text.split("[NAME]")
-            reciever_email_information[row["name"]] = {}
-            reciever_email_information[row["name"]]["text"] = text_seperated_list[0] + row["name"] + text_seperated_list[1] 
-            reciever_email_information[row["name"]]["email"] = row["email"]
+            seperated_line_text_list = text.splitlines()
+            
+            email_sendor.reciever_data_dict[row["name"]] = {}
+            email_sendor.reciever_data_dict[row["name"]]["text"] = email_sendor.determine_user_email_text(row = row, seperated_line_text_list = seperated_line_text_list)
+            email_sendor.reciever_data_dict[row["name"]]["email"] = row["email"]
 
 # 4. Send the letter generated in step 3 to that person's email address.
 my_email = "pan289277@gmail.com"
@@ -72,6 +110,4 @@ connection = smtplib.SMTP("smtp.gmail.com", port = 587)
 connection.starttls()
 connection.login(user = my_email, password = password)
 
-for name in reciever_email_information:
-    if reciever_email_information:
-        connection.sendmail(from_addr = my_email, to_addrs = reciever_email_information[name]["email"], msg = f"Subject:Birthday wish!!!!\n\n{reciever_email_information[name]['text']}")
+email_sendor.sending_emails(sendor_email = my_email, password = password, connection = connection)
