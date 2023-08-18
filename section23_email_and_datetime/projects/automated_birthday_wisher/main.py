@@ -8,6 +8,7 @@ from data_file_service import DataFileService
 from user import User
 import random
 from validate_email import validate_email
+from users_input_validator import UsersInputValidator
 
 def validation_email(email):
     is_valid = validate_email(email = email)
@@ -15,11 +16,9 @@ def validation_email(email):
     if not is_valid:
         raise ValueError("Invalid email address.")
 
-def is_more_data_in_dataframe():
+def is_more_data_in_dataframe(users_input_validator):
     is_continue = input("Do you want to adding more data to birthday.csv file? (y/n): ")
-
-    if is_continue != 'y' and is_continue != 'n':
-        raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
+    users_input_validator.validate_yes_and_no_answer(is_continue)
         
     if is_continue == 'y':
         return True
@@ -39,6 +38,7 @@ letter_3_file = "/Gittest/python_learning_after_sec_21/pythonjourney/section23_e
 text_file_location_list = [letter_1_file, letter_2_file, letter_3_file]
 
 date_ulits = DateUtils()
+users_input_validator = UsersInputValidator()
 data_file_service = DataFileService()
 data_frame_ulits = DataFrameUtils()
 email_sendor = EmailSendor()
@@ -51,13 +51,13 @@ data_frame_ulits.to_be_send_mail_users_dataframe = data_frame_ulits.get_empty_da
 
 # Telling user about current data from this file.
 print(f"Your current data is: \n\n {data_frame}\n")
-is_reset_data_frame = data_frame_ulits.is_reset_data_frame()
+is_reset_data_frame = data_frame_ulits.is_reset_data_frame(users_input_validator = users_input_validator)
 os.system('cls')
 
 if is_reset_data_frame:
     data_frame = data_frame_ulits.get_empty_data_frame()
 
-is_adding_data = data_file_service.asking_is_adding_data_to_file()
+is_adding_data = data_file_service.asking_is_adding_data_to_file(users_input_validator = users_input_validator)
 
 if is_adding_data:
     while True:

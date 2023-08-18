@@ -15,11 +15,10 @@ class DataFrameUtils():
 
         return data_frame
 
-    def is_reset_data_frame(self):
+    def is_reset_data_frame(self, users_input_validator):
         reset_data = input("Do you want to reset all data from your data file? (y/n): ")
 
-        if reset_data != 'n' and reset_data != 'y':
-            raise ValueError("Invalid input!!!. Only 'y' and 'n' are allowed.")
+        users_input_validator.validate_yes_and_no_answer(reset_data)
             
         if reset_data == 'y':
             return True
