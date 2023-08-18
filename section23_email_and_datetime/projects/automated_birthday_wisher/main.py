@@ -72,18 +72,20 @@ if is_adding_data:
         os.system('cls')
         
         data_frame = data_frame_ulits.add_new_row_data_to_data_frame(user = user, data_frame = data_frame)
-        is_more_data = is_more_data_in_dataframe()
+        is_more_data = is_more_data_in_dataframe(users_input_validator = users_input_validator)
         
         if not is_more_data:
             break
 
-data_file_service.update_data_to_csv(data_frame = data_frame, birthday_data_file = birthday_data_file)
-print(f"Your result data is: \n\n{data_frame}\n")
+
       
 # 2. Check if today matches a birthday in the birthdays.csv
 data_frame_ulits.update_users_today_birthday_dataframe(data_frame = data_frame)
-print(f"Below are the person that their's birthdays are today: \n\n{data_frame_ulits.related_birthday_dataframe}")
+print(f"Below are the person that their's birthdays are today: \n\n{data_frame_ulits.related_birthday_dataframe}\n")
 data_frame_ulits.set_to_be_send_email_users()
+
+data_file_service.update_data_to_csv(data_frame = data_frame, birthday_data_file = birthday_data_file)
+print(f"Your result data is: \n\n{data_frame}\n")
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
 if not data_frame_ulits.to_be_send_mail_users_dataframe.empty:
