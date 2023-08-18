@@ -22,5 +22,3 @@ class EmailSendor():
     def sending_emails(self, sendor_email, connection):
         for name in self.reciever_data_dict:
             connection.sendmail(from_addr = sendor_email, to_addrs = self.reciever_data_dict[name]["email"], msg = f"Subject:Birthday wish!!!!\n\n{self.reciever_data_dict[name]['text']}")
-
-        

@@ -13,8 +13,9 @@ class DataFileService():
         elif is_adding_data == 'n':
             return False
 
-    def add_data_to_dataframe(self, name, email_address, years, month, day, data_frame):
-        data_frame.loc[len(data_frame)] = [name, email_address, years, month, day]
-        return data_frame
-    
+    def update_data_to_csv(self, data_frame, birthday_data_file):
+        print(data_frame)
+        data_frame.to_csv(birthday_data_file, index = False)  
+
+
             

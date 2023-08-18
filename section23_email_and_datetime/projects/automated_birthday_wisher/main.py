@@ -1,10 +1,8 @@
 # 1. Update the birthdays.csv
 import os
-import pandas
 from data_frame_utils import DataFrameUtils
 from email_sendor import EmailSendor
 import smtplib
-import datetime as dt
 from date_utils import DateUtils
 from data_file_service import DataFileService
 from user import User
@@ -41,19 +39,15 @@ letter_3_file = "/Gittest/python_learning_after_sec_21/pythonjourney/section23_e
 text_file_location_list = [letter_1_file, letter_2_file, letter_3_file]
 
 date_ulits = DateUtils()
-date_file_service = DataFileService()
+data_file_service = DataFileService()
 data_frame_ulits = DataFrameUtils()
 email_sendor = EmailSendor()
 
 # Getting birthday data file.
-try:
-    data_frame = pandas.read_csv(birthday_data_file)
-
-except pandas.errors.EmptyDataError:
-    data_frame = data_frame_ulits.get_empty_data_frame()
-    data_frame.to_csv(birthday_data_file, index = False)
+data_frame = data_frame_ulits.gets_initial_data_frame(birthday_data_file = birthday_data_file)
 
 data_frame_ulits.related_birthday_dataframe = data_frame_ulits.get_empty_data_frame()
+data_frame_ulits.to_be_send_mail_users_dataframe = data_frame_ulits.get_empty_data_frame()
 
 # Telling user about current data from this file.
 print(f"Your current data is: \n\n {data_frame}\n")
@@ -63,7 +57,7 @@ os.system('cls')
 if is_reset_data_frame:
     data_frame = data_frame_ulits.get_empty_data_frame()
 
-is_adding_data = date_file_service.asking_is_adding_data_to_file()
+is_adding_data = data_file_service.asking_is_adding_data_to_file()
 
 if is_adding_data:
     while True:
@@ -71,7 +65,8 @@ if is_adding_data:
         user.name = input("Type name: ")
         user.email = input(f"Type {user.name} email address (If {user.name} don't have please type 'none'): ")
 
-        validation_email(email = user.email)
+        if user.email != "none":
+            validation_email(email = user.email)
 
         user.birthdays = date_ulits.get_user_birthday(user_name = user.name)
         os.system('cls')
@@ -79,21 +74,20 @@ if is_adding_data:
         data_frame = data_frame_ulits.add_new_row_data_to_data_frame(user = user, data_frame = data_frame)
         is_more_data = is_more_data_in_dataframe()
         
-        
-
         if not is_more_data:
             break
 
-    data_frame.to_csv(birthday_data_file, index = False)  
-    print(f"Your result data is: \n\n{data_frame}\n")
+data_file_service.update_data_to_csv(data_frame = data_frame, birthday_data_file = birthday_data_file)
+print(f"Your result data is: \n\n{data_frame}\n")
       
 # 2. Check if today matches a birthday in the birthdays.csv
-data_frame_ulits.update_user_today_birthday_dataframe(data_frame = data_frame)
+data_frame_ulits.update_users_today_birthday_dataframe(data_frame = data_frame)
 print(f"Below are the person that their's birthdays are today: \n\n{data_frame_ulits.related_birthday_dataframe}")
+data_frame_ulits.set_to_be_send_email_users()
 
 # 3. If step 2 is true, pick a random letter from letter templates and replace the [NAME] with the person's actual name from birthdays.csv
-if not data_frame_ulits.related_birthday_dataframe.empty:
-    for (index, row) in data_frame_ulits.related_birthday_dataframe.iterrows():
+if not data_frame_ulits.to_be_send_mail_users_dataframe.empty:
+    for (index, row) in data_frame_ulits.to_be_send_mail_users_dataframe.iterrows():
         with open(random.choice(text_file_location_list)) as file:
             text = file.read()
             seperated_line_text_list = text.splitlines()
@@ -103,11 +97,15 @@ if not data_frame_ulits.related_birthday_dataframe.empty:
             email_sendor.reciever_data_dict[row["name"]]["email"] = row["email"]
 
 # 4. Send the letter generated in step 3 to that person's email address.
-my_email = "pan289277@gmail.com"
-password = "xvnpwhutejppterx"
+    my_email = "pan289277@gmail.com"
+    password = "xvnpwhutejppterx"
 
-connection = smtplib.SMTP("smtp.gmail.com", port = 587)
-connection.starttls()
-connection.login(user = my_email, password = password)
+    connection = smtplib.SMTP("smtp.gmail.com", port = 587)
+    connection.starttls()
+    connection.login(user = my_email, password = password)
 
-email_sendor.sending_emails(sendor_email = my_email, connection = connection)
+    email_sendor.sending_emails(sendor_email = my_email, connection = connection)
+    print("Email have been send.")
+
+elif data_frame_ulits.to_be_send_mail_users_dataframe.empty:
+    print("Email haven't been send.")
