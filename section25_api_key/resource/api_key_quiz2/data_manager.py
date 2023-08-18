@@ -9,22 +9,17 @@ class DataManager():
         self.lastest_row_dict = {}
 
     def is_reset_data(self, file_name):
-        while True:
-            try:
-                reset = input(f"Do you want to reset your data in {file_name} (Type 'y' or 'n'): ")
-                if reset != 'y' and reset != 'n':
-                    raise ValueError()
+        reset = input(f"Do you want to reset your data in {file_name} (Type 'y' or 'n'): ")
+        if reset != 'y' and reset != 'n':
+            print(f"Your answer {reset} is invalid, please only type 'y' or 'n'.")
+            raise ValueError()
                 
-            except:
-                print(f"Your answer {reset} is invalid, please only type 'y' or 'n'.")
+        if reset == 'y':
+            return True
+        elif reset == 'n':
+            return False
 
-            else:
-                if reset == 'y':
-                    return True
-                elif reset == 'n':
-                    return False
-
-    def gets_column_list(self, weather_data):
+    def set_column_list(self, weather_data):
         """Determine dataframe column."""
         self.column_list.append('date')
         self.column_list.append('time')
@@ -42,7 +37,7 @@ class DataManager():
         """Creating initial data dictionary."""
         return {column:[] for column in self.column_list}
 
-    def getting_lastest_row_data_dict(self, weather_data_in_each_hours, time_data):
+    def update_lastest_row_dict(self, weather_data_in_each_hours, time_data):
         """Update data dictionary in each hour."""
         self.lastest_row_dict = self.creating_empty_data_dict()
         self.lastest_row_dict['date'].append(str(time_data.date()))

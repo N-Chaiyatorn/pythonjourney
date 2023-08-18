@@ -4,18 +4,18 @@ import pandas
 from geopy.geocoders import Nominatim
 import datetime as dt
 from data_manager import DataManager
-from sms_sending_machine import SmsSendingMachine
+from sms_service import SmsService
 
 # Determine every objects.
 data_manager = DataManager()
-sms_sending_machine = SmsSendingMachine()
+sms_sending_machine = SmsService()
 
 # Getting user's town position data.
 position_detection = Nominatim(user_agent = "...")
 location_data = position_detection.geocode("Ladkrabang")
 
 # Getting current time data.
-now = dt.datetime.now()
+current_time = dt.datetime.now()
 
 # Determine api key.
 api_key = os.environ.get("weather_api_key")
@@ -33,11 +33,8 @@ response = requests.get(url = "https://api.openweathermap.org/data/3.0/onecall?"
 
 data = response.json()
 
-# Determine time variable to store every hours in time data.
-time_data = now
-
 # Determine dataframe column and creating initial data dictionary.
-data_manager.gets_column_list(weather_data = data['hourly'][0]['weather'][0])
+data_manager.sets_column_list(weather_data = data['hourly'][0]['weather'][0])
 
 empty_data_dict = data_manager.creating_empty_data_dict()
 data_manager.dataframe = pandas.DataFrame(empty_data_dict)
@@ -46,7 +43,7 @@ total_storaged_hours = 0
 
 # Adding data to dictionary.
 for hourly_data in data['hourly']:
-    data_manager.getting_lastest_row_data_dict(weather_data_in_each_hours = hourly_data['weather'][0], time_data = time_data)
+    data_manager.sets_lastest_row_dict(weather_data_in_each_hours = hourly_data['weather'][0], time_data = current_time)
     data_manager.dataframe = pandas.concat([data_manager.dataframe, pandas.DataFrame(data_manager.lastest_row_dict)])
 
     total_storaged_hours += 1
@@ -54,7 +51,7 @@ for hourly_data in data['hourly']:
     if total_storaged_hours == 12:
         break
 
-    time_data += dt.timedelta(hours = 1)
+    current_time += dt.timedelta(hours = 1)
 
 rainning_time_dataframe = data_manager.getting_raining_time_dataframe()
 
@@ -62,3 +59,6 @@ rainning_time_dataframe = data_manager.getting_raining_time_dataframe()
 if not rainning_time_dataframe.empty:
     sms_sending_machine.creating_body_text(rainning_time_dataframe = rainning_time_dataframe)
     sms_sending_machine.sending_sms()
+    print("Your sms has been send")
+else:
+    print("Sms hadn't been send, so in next 12 hours rain will not occurs.")

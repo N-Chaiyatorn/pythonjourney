@@ -1,7 +1,7 @@
 from twilio.rest import Client
 import os
 
-class SmsSendingMachine():
+class SmsService():
     def __init__(self) -> None:
         self.sms_body = f"\nIn Ladkrbang\n"
 
