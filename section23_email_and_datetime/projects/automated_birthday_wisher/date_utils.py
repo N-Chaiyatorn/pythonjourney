@@ -1,6 +1,5 @@
-import datetime as dt
 
-class DateUtils():   # ควรใช้ DateAnalyser  
+class DateUtils():  
     def is_leap_years(self, birth_years):
         if birth_years % 4 == 0 and birth_years % 400 == 0:
             return True
