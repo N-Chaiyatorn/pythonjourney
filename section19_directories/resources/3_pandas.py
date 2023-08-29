@@ -66,3 +66,8 @@ data = pandas.DataFrame(data_dict)
 print(data)
 
 data.to_csv("students.csv")
+
+# method 'concat' is used to combining two data frame to one data frame
+# Ex.
+# df3 = pandas.concat(df1, df2)
+# 
