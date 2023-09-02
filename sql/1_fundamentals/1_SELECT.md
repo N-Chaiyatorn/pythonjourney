@@ -18,8 +18,6 @@ We want to send out a promotional email to our existing customers. Use a **SELEC
 SELECT DISTINCT email,first_name,last_name
 FROM customer
 
-WHERE active = 1
-
 ```
 
 ### DISTINCT
