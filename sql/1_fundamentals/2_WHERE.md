@@ -3,7 +3,6 @@
 ## WHERE statement
 **WHERE** is another the most common SQL statement. It allows us specify conditions on columns for the rows to be returned
 
-Example: 
 
 ```
 SELECT column_name_1, column_name_2 

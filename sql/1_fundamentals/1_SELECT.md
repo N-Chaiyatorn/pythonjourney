@@ -13,6 +13,13 @@ Example:
 ### Challenge
 We want to send out a promotional email to our existing customers. Use a **SELECT** statement to grab the first name, last name and email of every customer
 
+### the code is below this
+```
+SELECT DISTINCT email,first_name,last_name
+FROM customer
+
+```
+
 ### DISTINCT
 Sometimes a table contains a column that has duplicate values and you might only want the unique/distinct value. You can use **DISTINCT** keyword to get only the distinct values in a column
 
