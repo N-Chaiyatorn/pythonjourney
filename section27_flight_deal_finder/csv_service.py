@@ -2,6 +2,7 @@
 import pandas
 
 class CsvService():
+    # Should determine file path as method parameters instead set to attribute.
     def __init__(self):
         self.file_path = None
         self.col_list = []

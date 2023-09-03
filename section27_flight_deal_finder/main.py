@@ -35,8 +35,7 @@ def get_date_to(date_from, month_delta):
 
     return date_from.replace(month = date_to_month, year = date_to_year)
 
-def get_client_for_sms():
-    account_sid = 'ACb1281026ebff5f53909bdf56891972a7'
+def get_client_for_sms(account_sid):
     auth_token = os.environ.get('auth_token')
 
     return Client(account_sid, auth_token)
@@ -52,7 +51,8 @@ csv_service = CsvService()
 now = dt.datetime.now()
 
 # Determine object 'client' for sending sms.
-client = get_client_for_sms()
+ACCOUNT_SID = 'ACb1281026ebff5f53909bdf56891972a7'
+client = get_client_for_sms(account_sid = ACCOUNT_SID)
 
 # Determine connection object for send email when error occur.
 my_email = "pan289277@gmail.com"
@@ -96,6 +96,18 @@ body = {
 
 # Get api request.
 response = requests.get(url = "https://api.tequila.kiwi.com/locations/query", params = body, headers = kiwi_headers)
+
+
+# ควรจะหาวิธีเขียนโค้ดให้สั้นที่สุด 
+# 
+# 
+# 
+# 
+# try:
+#     response.raise_for_status()
+# except:
+#     connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
+#     status_code_value_error_occur()
 
 try:
     validate_status_code(status_code = response.status_code)
@@ -178,14 +190,14 @@ for endpoint_city in flight_data.endpoint_city_data:
     # Searching for flight trips.
     response = flight_search.searching_flight(body = body, headers = kiwi_headers)
 
-    # Set response.json() data to 'every_flight_for_each_city'.
-    flight_data.set_every_flight_for_each_city(city_flights = response.json()["data"])
-
     try:
         validate_status_code(status_code = response.status_code)
     except:
         connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
         status_code_value_error_occur()
+
+    # Set response.json() data to 'every_flight_for_each_city'.
+    flight_data.set_every_flight_for_each_city(city_flights = response.json()["data"])
 
     # Filter every trips that the trip duration is around 7 days to 28 days. 
     available_total_days_trip_flights = flight_data.get_available_total_days_trip_flights()

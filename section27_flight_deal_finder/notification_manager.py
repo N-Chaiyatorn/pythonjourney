@@ -3,6 +3,7 @@ import random
 
 class NotificationManager:
     #This class is responsible for sending notifications with the deal flight details.
+    # Client should be this class attribute
     def sending_notification(self, client, body):
         message = client.messages.create(
             from_ = '+16187423072',
@@ -28,6 +29,7 @@ class NotificationManager:
             return False
 
     def get_randomaly_notification_flight(self,available_flight_list):
+        # get_random_notification_flight
         return random.choice(available_flight_list)
 
 
