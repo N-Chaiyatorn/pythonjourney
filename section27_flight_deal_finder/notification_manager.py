@@ -4,8 +4,11 @@ import random
 class NotificationManager:
     #This class is responsible for sending notifications with the deal flight details.
     # Client should be this class attribute
-    def sending_notification(self, client, body):
-        message = client.messages.create(
+    def __init__(self, client):
+        self.client = client
+        
+    def sending_notification(self, body):
+        message = self.client.messages.create(
             from_ = '+16187423072',
             body = body,
             to = '+66622359494'

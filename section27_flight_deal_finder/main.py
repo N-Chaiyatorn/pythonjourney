@@ -10,57 +10,34 @@ import os
 from twilio.rest import Client
 from csv_service import CsvService
 import pandas
-from json_service import JsonService
+import json
 
 def status_code_value_error_occur():
     raise ValueError("Api searching process are incomplete or get error.")
 
-def validate_status_code(status_code):
-    if status_code < 200 or status_code >= 300:
-        raise ValueError() 
+def dump_json_file(json_file_path, data):
+    with open(json_file_path, 'w') as file:
+        json.dump(data, file, indent = len(data))
 
-def is_key_exist(key, dict):
-    if key in dict.keys():
-        return True
-    else:
-        return False
-
-def get_date_to(date_from, month_delta):
-    date_to_year = date_from.year
-    date_to_month = date_from.month + month_delta
-
-    if date_to_month > 12:
-        date_to_month -= 12
-        date_to_year = date_from.year + 1
-
-    return date_from.replace(month = date_to_month, year = date_to_year)
-
-def get_client_for_sms(account_sid):
-    auth_token = os.environ.get('auth_token')
-
-    return Client(account_sid, auth_token)
+ACCOUNT_SID = os.environ.get('account_sid')
+auth_token = os.environ.get('auth_token')
 
 # Determine every object.
 flight_search = FlightSearch()
 flight_data = FlightData()
-notification_manager = NotificationManager()
+notification_manager = NotificationManager(client = Client(ACCOUNT_SID, auth_token))
 data_manager = DataManager()
-json_service = JsonService()
 csv_service = CsvService()
 
 now = dt.datetime.now()
 
-# Determine object 'client' for sending sms.
-ACCOUNT_SID = 'ACb1281026ebff5f53909bdf56891972a7'
-client = get_client_for_sms(account_sid = ACCOUNT_SID)
-
 # Determine connection object for send email when error occur.
-my_email = "pan289277@gmail.com"
-password = "xvnpwhutejppterx"
+my_email = os.environ.get('my_email')
+smtp_pass = os.environ.get('smtp_pass')
 
 connection = smtplib.SMTP("smtp.gmail.com", port=587)
 connection.starttls()
-connection.login(my_email, password)
+connection.login(my_email, smtp_pass)
 
 STARTING_POINT_CITY = "Bangkok"
 
@@ -68,18 +45,14 @@ STARTING_POINT_CITY = "Bangkok"
 json_file_path = "/Gittest/python_learning_after_sec_21/pythonjourney/section27_flight_deal_finder/send_sms_flight_data.json"
 csv_file_path = json_file_path.replace("json", "csv")
 
-# Set file path from given file path.
-json_service.set_file_path(file_path = json_file_path)
-csv_service.set_file_path(csv_file_path = csv_file_path)
-
 # Read csv file and get current dataframe.
 try:
-    flight_data.sms_flights_dataframe = csv_service.get_csv_file_data()
+    flight_data.sms_flights_dataframe = csv_service.get_csv_file_data(file_path = csv_file_path)
 except FileNotFoundError:
     flight_data.set_sms_flights_dataframe_to_empty()
 except pandas.errors.EmptyDataError:
     flight_data.set_sms_flights_dataframe_to_empty()
-    csv_service.update_data_to_csv(data = flight_data.sms_flights_dataframe)
+    csv_service.update_data_to_csv(data = flight_data.sms_flights_dataframe, file_path = csv_file_path)
 
 # Get kiwi api key
 kiwi_api_key = os.environ.get("kiwi_api_key")
@@ -97,20 +70,9 @@ body = {
 # Get api request.
 response = requests.get(url = "https://api.tequila.kiwi.com/locations/query", params = body, headers = kiwi_headers)
 
-
 # ควรจะหาวิธีเขียนโค้ดให้สั้นที่สุด 
-# 
-# 
-# 
-# 
-# try:
-#     response.raise_for_status()
-# except:
-#     connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
-#     status_code_value_error_occur()
-
 try:
-    validate_status_code(status_code = response.status_code)
+    response.raise_for_status()
 except:
     connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
     status_code_value_error_occur()
@@ -119,7 +81,7 @@ flight_data.set_starting_city_data(city_name = STARTING_POINT_CITY, iata_code = 
 response = data_manager.get_google_sheet_data()
 
 try:
-    validate_status_code(status_code = response.status_code)
+    response.raise_for_status()
 except:
     connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
     status_code_value_error_occur()
@@ -142,7 +104,7 @@ for row in flight_data.endpoint_city_data:
         response = flight_search.searching_endpoint_city(kiwi_headers = kiwi_headers, body = body)
 
         try:
-            validate_status_code(status_code = response.status_code)
+            response.raise_for_status()
         except:
             connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
             status_code_value_error_occur()
@@ -164,7 +126,7 @@ for row in flight_data.endpoint_city_data:
         response = data_manager.put_data(row_num = row_num, body = body)
 
         try:
-            validate_status_code(status_code = response.status_code)
+            response.raise_for_status()
         except:
             connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
             status_code_value_error_occur()
@@ -191,7 +153,7 @@ for endpoint_city in flight_data.endpoint_city_data:
     response = flight_search.searching_flight(body = body, headers = kiwi_headers)
 
     try:
-        validate_status_code(status_code = response.status_code)
+        response.raise_for_status()
     except:
         connection.sendmail(from_addr = my_email, to_addrs = my_email, msg = f"Subject:Api search are failed.\nplease check your code or calling to address {my_email}.")
         status_code_value_error_occur()
@@ -216,7 +178,7 @@ for endpoint_city in flight_data.endpoint_city_data:
         notification_message = notification_manager.get_notification_message(send_sms_flight = send_sms_flight)
 
         # Send sms.
-        notification_manager.sending_notification(client = client, body = notification_message)
+        notification_manager.sending_notification(body = notification_message)
 
         # Set sms send time and date to record into csv and json file.
         send_sms_flight["time"] = str(now.time())
@@ -229,7 +191,7 @@ for endpoint_city in flight_data.endpoint_city_data:
     notification_manager.display_notification_status(start_city = STARTING_POINT_CITY, endpoint_city = endpoint_city["city"], is_send_notification = is_send_notification)
 
 # Update data to csv and json file.
-csv_service.update_data_to_csv(data = flight_data.sms_flights_dataframe)
-json_service.dump_json_file(data = flight_data.sms_flights_dataframe.to_dict())
+csv_service.update_data_to_csv(data = flight_data.sms_flights_dataframe, file_path = csv_file_path)
+dump_json_file(json_file_path = json_file_path, data = flight_data.sms_flights_dataframe.to_dict(orient = 'list'))
 
 print(f"The result data is:\n\n{flight_data.sms_flights_dataframe}")
