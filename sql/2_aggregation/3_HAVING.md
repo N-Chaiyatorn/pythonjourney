@@ -1,38 +1,19 @@
 # SQL Aggregation
 
-## GROUP BY statement
-- **GROUP BY** statement will allow us to aggregate data and apply aggregate functions per category
-- **GROUP BY** must be right after FROM or WHERE statement
+## HAVING statement
+- We can't use **WHERE** to filter based off of aggregate results. because those **aggregations happen after a WHERE is executure**
+- **HAVING** statement allow us to use the aggregate result as a filter along with **GROUP BY**
 
-- If we have group by, in **SELECT** statement, columns must either get wrapped by aggregate function or be in the **GROUP BY** call
 ```
-SELECT category_col, AGGREGATE_FUNCTION(data_col)
-FROM table
+SELECT company, SUM(sales)
+FROM finance_table
+WHERE company != 'Google'
 GROUP BY category_col
-
-SELECT category_col, AGGREGATE_FUNCTION(data_col)
-FROM table
-WHERE category_col != 'A'
-GROUP BY category_col
+HAVING SUM(sales) > 1000
 ```
 
-- Categorical column is a column we choose to be a category and in the **GROUP BY** call, in below example image the categorical column is `category`
-![](group_by_example_1.png)
-
-- We can have more than 1 categorical columns
-```
-SELECT category_col_1, category_col_2, AGGREGATE_FUNCTION(data_col)
-FROM table
-GROUP BY category_col_1, category_col_2
-```
-
-- WHERE statements should not be use on aggregation results, we will learn to use HAVING to apply filter on those results later
-
-## GROUP BY Challenge
-- We have two staff members, with staff IDs 1 and 2. We want to give a bonus to the staff member that handled the most payments. Most in terms of number of payments processed, not total dollar amount. How many payments did each staff member handle and who gets the bonus?
+## HAVING Challenge
+- We are launching a platinum service for our most loyal customer. We will assign platinum status to customers that have had 40 or more transaction payments. What customer_id are eligible for platinum status
     - use the payment table
-- Corporate HQ is conducting a study on the relationship between replacement cost and a movie MPAA rating (e.g. G, PG, R, etc.) What is the average replacement cost per MPAA rating?
-    - use the film table
-- We are running a promotion to reward our top 5 customers with coupons. What are the customer ids of the top 5 customers by total spend?
+- What are the customer ids of customers who have spent more than 100 USD in payment transactions with our staff_id member 2
     - use the payment table
-    - use order by
