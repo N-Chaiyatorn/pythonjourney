@@ -15,5 +15,20 @@ HAVING SUM(sales) > 1000
 ## HAVING Challenge
 - We are launching a platinum service for our most loyal customer. We will assign platinum status to customers that have had 40 or more transaction payments. What customer_id are eligible for platinum status
     - use the payment table
+```
+SELECT customer_id
+FROM payment
+GROUP BY customer_id
+
+HAVING COUNT(payment_id) >= 40
+```
 - What are the customer ids of customers who have spent more than 100 USD in payment transactions with our staff_id member 2
     - use the payment table
+```
+SELECT customer_id
+FROM payment
+
+GROUP BY staff_id, customer_id
+HAVING SUM(amount) > 100 and staff_id = 2
+
+```

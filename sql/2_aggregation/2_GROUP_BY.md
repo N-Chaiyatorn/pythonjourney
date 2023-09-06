@@ -27,7 +27,7 @@ GROUP BY category_col_1, category_col_2
 ```
 
 (Group by:จะทำหน้าที่เเยกประเภทเเละจัดประเภทของข้อมูลตามค่าต่างๆที่เป็นไปได้ใน col ที่กำหนด โดยที่สามารถใช้งานร่วมกับ aggregation function ต่างๆ ได้ เช่น count, avg โดยที่ aggregation func จะทำการดำเนินการไปทีละ categories ข้อมูล เช่น ข้อมูล A ที่ไม่ได้จัดประเภท เวลาใช้ count(*) มันก็จะนับ จน เเถวทั้งหมดของข้อมูล A อย่างเดียว โดยที่ถ้า ข้อมูล B มีการ group by เเละเเยกข้อมูลเป็น 2 ประเภท คือ B.1 เเละ B.2
-ดังนั้นเวลาใช้ count มันก็จะนับ จน เเถวทั้งหมดของข้อมูล B.1 เเละ return มาเป็นเเถวเเรก เเละ ต่อมาจะนับข้อมูลของเเถวใน B.2 เเละ return กลับมาในเเถวที่สอง)
+ดังนั้นเวลาใช้ count มันก็จะนับ จน เเถวทั้งหมดของข้อมูล B.1 เเละ return มาเป็นเเถวเเรกของ col count เเละ ต่อมาจะนับข้อมูลของเเถวใน B.2 เเละ return กลับมาในเเถวที่สองของ col count)
 
 
 - WHERE statements should not be use on aggregation results, we will learn to use HAVING to apply filter on those results later
