@@ -14,17 +14,47 @@ These are some functions and operations related to the specific data types
 - CURRENT_TIME
 - CURRENT_DATE
 
+### Please note that
+TIMEZONE in postgrate only work with show statement like this below
+```
+SHOW TIMEZONE
+```
+The code above will get your current timezone that is set to be default in postgrate
+
 Try this in the pgAdmin
 ```
-SELECT NOW(), TIMEOFDAY(), CURRENT_DATE()
+SELECT NOW(), TIMEOFDAY(), CURRENT_DATE
 ```
 
 ## Extract
 Let's explore extracting information from a time based data type using
 - EXTRACT(YEAR FROM date_col): Allows you tto extract sub-component of a date value i.e. YEAR, MONTH, DAY, WEEK, QUARTER
 - AGE(date_col): Calculate current age given a timestamp
+For example:
+### Ex1:
+```
+SELECT AGE(given_timestamp)
+```
+In the code above it will calculate the age between today at 0.00 AM and given timestamp as 'Today - given_timestamp'
+### Ex2:
+```
+SELECT AGE(given_timestamp2, given_timestamp1)
+```
+given_timestamp could be like this
+```
+SELECT AGE(now(), TIMESTAMP '2020-01-01 08:30:15')
+```
+In the code above it will calculate the age between given_timestamp2 and given_timestamp1 
 - TO_CHAR(date_col, 'mm-dd-yyyy'): Convert to text, more details on https://www.postgresql.org/docs/12/functions-formatting.html
 
 ## Challenge
 1. Which months did payments occur? Format your answer to return the full month name
+```
+SELECT DISTINCT TO_CHAR(payment_date, 'Month') payment_month
+FROM payment;
+```
 2. How many payments occurred on Monday
+```
+SELECT COUNT(CASE WHEN TO_CHAR(payment_date, 'Day') LIKE '%Monday%' THEN 1 END)
+FROM payment;
+```
