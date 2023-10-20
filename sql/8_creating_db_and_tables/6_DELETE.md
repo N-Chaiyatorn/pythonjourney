@@ -22,3 +22,19 @@ DELETE FROM table
 
 ## DELETE Challenge
 Try in pgAdmin
+Ex1:
+```
+# We want to delete every rows that prices column is null.
+DELETE FROM game_list
+WHERE prices IS NULL
+```
+Ex2: Delete reffernce from another table.:
+```
+# The table vip_student have every grade student here!!(Grade:F-A), so in table vip_student we only want every students that have grade 'A' only but in table vip_student don't have any grade column to be compared so we going to use 'using'
+statement to get student table student and compare what id that have grade 'A'.
+
+DELETE FROM vip_student vs
+USING student s
+WHERE vs.id(FK refference to s.id) = s.id(PK) AND s.grade != 'A' 
+
+```
