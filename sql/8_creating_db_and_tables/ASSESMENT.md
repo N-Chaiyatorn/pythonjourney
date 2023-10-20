@@ -25,7 +25,7 @@ Once you've made the tables, insert a student named Mark Watney (student_id=1) w
 Then insert a teacher names Jonas Salk (teacher_id = 1) who as a homeroom number of 5 and is from the Biology department. His contact info is: jsalk@school.org and a phone number of 777-555-4321.
 
 __Keep in mind that these insert tasks may affect your constraints!__
-# Case 1 (Each teacher can only take care only one homeroom or less)
+# Each teacher can only take care only one homeroom or  less.
 ```
 # Create teachers table
 CREATE TABLE teachers(
@@ -74,51 +74,6 @@ VALUES
 
 
 
-```
-
-# Case 2 (Each teacher can take care of various homeroom room.)
-```
-# Create table teachers
-CREATE TABLE teachers(
-	teacher_id SERIAL PRIMARY KEY,
-	first_name VARCHAR(40) NOT NULL,
-	last_name VARCHAR(40) NOT NULL,
-	homeroom_number INTEGER,
-	department VARCHAR(40),
-	email VARCHAR(40),
-	phone VARCHAR(40) NOT NULL,
-	UNIQUE(email), 
-    UNIQUE(phone)
-)
-
-# Create table students
-CREATE TABLE students(
-	student_id SERIAL PRIMARY KEY,
-	first_name VARCHAR(40) NOT NULL,
-	last_name VARCHAR(40) NOT NULL,
-	homeroom_number INTEGER NOT NULL,
-	phone VARCHAR(40) NOT NULL,
-	email VARCHAR(40),
-	graduation_year INTEGER NOT NULL,
-	
-	UNIQUE(phone), 
-    UNIQUE(email)
-)
-
-# Insert defined student to student table. 
-INSERT INTO 
-	students(first_name, last_name, 
-			homeroom_number, phone, email, 
-			graduation_year)
-VALUES 
-	('Mark', 'Watney', 5, '777-555-1234', NULL, 2035)
-
-# Insert defined teacher to teachers table.	
-INSERT INTO 
-	teachers(first_name, last_name, 
-			homeroom_number, department, phone, email)
-VALUES 
-	('Jonas', 'Salk', 5, 'Biology department', '777-555-4321', 'jsalk@school.org')
 ```
 ## Results after insert tables.
 ### Students table
