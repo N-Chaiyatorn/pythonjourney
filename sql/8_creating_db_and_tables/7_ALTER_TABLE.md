@@ -49,7 +49,11 @@ RENAME old_name TO new_name
 SELECT *
 FROM information_schema.table_constraints 
 ```
-
+```
+-- Change table name to another name
+ALTER TABLE table_name
+TO renamed_table
+```
 - more details https://www.postgresql.org/docs/current/sql-altertable.html
 
 ## ALTER TABLE Challenge
