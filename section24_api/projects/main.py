@@ -57,13 +57,14 @@ def iss_detecting_program():
 
     parameters = {
         "lat":user.latitude,
-        "long":user.longitude,
+        "lng":user.longitude,
         "date":now_date
         }
+    
 
     sunrise_sunset_data_response = requests.get(url = "https://api.sunrise-sunset.org/json?", params=parameters)
     sunrise_sunset_data = sunrise_sunset_data_response.json()
-
+    
     is_night_time = is_night(sunrise_time = sunrise_sunset_data['results']['sunrise'], sunset_time = sunrise_sunset_data['results']['sunset'], now = now)
     is_iss_over_user_head = is_iss_overhead(iss_satellite = iss_satellite, user = user)
 

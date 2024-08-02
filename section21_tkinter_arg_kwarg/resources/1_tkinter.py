@@ -110,12 +110,13 @@ class SynchronousMachine():
         the_result_of_cal.pack()
     
     def synchronous_cal(self):
-        return (120 * self.frequency) / self.pole
+        self.synchronous_speed = (120 * self.frequency) / self.pole
         
 def synchronous_speed_cal():
     synchronous_machine = SynchronousMachine()
     synchronous_machine.pole = int(pole_input.get())
     synchronous_machine.frequency = int(frequency_input.get())
+    synchronous_machine.synchronous_cal()
     the_result_of_cal = Label(text=f"Synchronous speed (Ns) is {synchronous_machine.synchronous_speed} rpm when pole (P) is {synchronous_machine.pole} and frequency (f) is {synchronous_machine.frequency}", font=("Aerial", 10))
     the_result_of_cal.pack()
     convert_button = Button(text = "convert speed to rad/s", command = synchronous_machine.speed_converting)
