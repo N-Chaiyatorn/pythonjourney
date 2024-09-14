@@ -8,7 +8,7 @@ STOCK = "TSLA"              # symbol value.
 COMPANY_NAME = "Tesla Inc"
 
 # (check api ของราคาหุ้น เเล้วส่งมาใน sms)
-## STEP 1: Use https://www.alphavantage.co (API_KEY:BQUXIFLRRZTLV1KZ)
+## STEP 1: Use https://www.alphavantage.co
 # When STOCK price increase/decreases by 5% (จริงๆเท่าไหร่ก็ได้) between yesterday and the day before yesterday then print("Get News").
 
 def show_send_sms_news(sms_sendor):
