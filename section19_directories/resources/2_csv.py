@@ -17,5 +17,5 @@
 
 import pandas #ค่อนข้างสำคัญ 
 
-data = pandas.read_csv("/Gittest/Python study/pythonjourney/section19_directories/resources/transaction.csv")
+data = pandas.read_csv("/Gittest/python_learning_after_sec_21/pythonjourney/section19_directories/resources/transaction.csv")
 print(data["unitsSold"][4])
